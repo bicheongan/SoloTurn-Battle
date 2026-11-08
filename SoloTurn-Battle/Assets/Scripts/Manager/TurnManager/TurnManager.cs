@@ -1,20 +1,21 @@
+using NUnit.Framework.Interfaces;
+using System;
 using UnityEngine;
 
-public class TurnManager
+public class TurnManager : MonoBehaviour
 {
-    private IState _currentState;
+    private TurnEnum _currentTurn = TurnEnum.None;
 
-    public IState CurrentState { get { return _currentState; } }
+    public event Action<TurnEnum> OnTurnChanged;
+    public TurnEnum CurrentTurn { get { return _currentTurn; } }
 
-    public void Initialize(IState startState)
+    public void ChangeTurn(TurnEnum newTurn)
     {
-        _currentState = startState;
-        _currentState.Enter();
-    }
-    public void ChangeState(IState nextState)
-    {
-        _currentState.Exit();
-        _currentState = nextState;
-        _currentState.Enter();
+        if (_currentTurn == newTurn)
+            return;
+
+        _currentTurn = newTurn;
+
+        OnTurnChanged?.Invoke(_currentTurn);
     }
 }
