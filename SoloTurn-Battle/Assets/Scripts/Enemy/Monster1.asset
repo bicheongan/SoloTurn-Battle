@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 844097af71845da4295115aa1b6f78e8, type: 3}
   m_Name: Monster1
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  _monsterName: "\uD14C\uC2A4\uD130\uBAAC"
-  _prefab: {fileID: 0}
+  _monsterName: "\uBAAC\uC2A4\uD1301"
+  _prefab: {fileID: 4807779217247352979, guid: 6639c16e774ba1c489f8ae6b5992ee2b, type: 3}
   _isBoss: 0
   _hp: 10
-  _mp: 5
-  _attack: 5
-  _defend: 5
-  _speed: 1
+  _mp: 10
+  _attack: 10
+  _defend: 10
+  _speed: 2

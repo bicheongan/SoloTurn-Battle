@@ -1007,6 +1007,50 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 585435308780568559, guid: 8e78352b83ab373449299e982a7c7816, type: 3}
   m_PrefabInstance: {fileID: 8473510718824263660}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2050286321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2050286323}
+  - component: {fileID: 2050286322}
+  m_Layer: 0
+  m_Name: SceneChanger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2050286322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050286321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac882c496ed9c94391ebb701df1f85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
+--- !u!4 &2050286323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050286321}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 651.8264, y: 623.9049, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2779708209350809804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1201,6 +1245,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnterButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3790137434574935689, guid: c8309970ba6477a4bafef0224c96aab8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2050286322}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1313,3 +1361,4 @@ SceneRoots:
   - {fileID: 599107971}
   - {fileID: 176585931}
   - {fileID: 975635981}
+  - {fileID: 2050286323}

@@ -2,16 +2,21 @@ using UnityEngine;
 
 public class EnemyTest : MonoBehaviour
 {
-    private EnemyData _data;
-    private float _currentHp;
+    [SerializeField] private int _maxHp = 100;
+    [SerializeField] private int _maxMp = 50;
+    [SerializeField] private int _attack = 10;
+    [SerializeField] private int _defense = 5;
+    [SerializeField] private int _speed = 5;
 
-    public float Hp => _currentHp;
-    public int Speed => _data.Speed;
-    public bool IsDead => _currentHp <= 0;
+    private int _currentHp;
+    private int _currentMp;
 
-    public void Initialize(EnemyData data)
+    public int Speed => _speed;
+    public int Hp => _maxHp;
+
+    private void Awake()
     {
-        _data = data;
-        _currentHp = _data.HP;
+        _currentHp = _maxHp;
+        _currentMp = _maxMp;
     }
 }

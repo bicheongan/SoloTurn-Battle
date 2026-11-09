@@ -6,10 +6,11 @@ public class TurnManager : MonoBehaviour
 {
     private TurnEnum _currentTurn = TurnEnum.None;
     [SerializeField]private PlayerTest _playerTest;
-    [SerializeField]private EnemyTest _enemyTest;
+    [SerializeField]private Enemy _enemyTest;
 
     public event Action<TurnEnum> OnTurnChanged;
     public TurnEnum CurrentTurn { get { return _currentTurn; } }
+
 
     public void BattleStart()
     {
