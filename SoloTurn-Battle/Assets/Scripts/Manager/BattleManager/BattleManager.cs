@@ -27,7 +27,7 @@ public class BattleManager : MonoBehaviour
         }
         for (int i = 0; i < data.Count; i++)
         {
-            EnemyData enemy = Instantiate(data[i], _spawnPoints[i].position, _spawnPoints[i].rotation);
+            GameObject enemyObject = Instantiate(data[i].Prefab, _spawnPoints[i].position, _spawnPoints[i].rotation);
         }
     }
 }
