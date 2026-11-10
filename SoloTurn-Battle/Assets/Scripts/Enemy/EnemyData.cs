@@ -1,14 +1,14 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewEnemy", menuName = "RPG/Enemy Data")]
 public class EnemyData : ScriptableObject
 {
-    [Header("±âº» Á¤º¸")]
+    [Header("ê¸°ë³¸ ì •ë³´")]
     [SerializeField] private string _monsterName;
     [SerializeField] private GameObject _prefab;
     [SerializeField] private bool _isBoss;
 
-    [Header("´É·ÂÄ¡")]
+    [Header("ëŠ¥ë ¥ì¹˜")]
     [SerializeField] private float _hp;
     [SerializeField] private int _mp;
     [SerializeField] private float _attack;

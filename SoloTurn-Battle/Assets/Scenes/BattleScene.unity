@@ -945,7 +945,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurnManager
   _playerTest: {fileID: 1108948650}
-  _enemyTest: {fileID: 0}
+  _enemy:
+  - {fileID: 0}
 --- !u!4 &2089614161
 Transform:
   m_ObjectHideFlags: 0

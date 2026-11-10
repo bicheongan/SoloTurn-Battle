@@ -1,20 +1,28 @@
-using NUnit.Framework.Interfaces;
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class TurnManager : MonoBehaviour
 {
-    private TurnEnum _currentTurn = TurnEnum.None;
     [SerializeField]private PlayerTest _playerTest;
-    [SerializeField]private Enemy _enemyTest;
+    private List<EnemyData> data;
+    private int _maxSpeed;
+    private TurnEnum _currentTurn = TurnEnum.None;
 
     public event Action<TurnEnum> OnTurnChanged;
     public TurnEnum CurrentTurn { get { return _currentTurn; } }
 
+    private void Start()
+    {
+        data = BattleData.data;
+        MaxSpeed();
+        BattleStart();
+        Debug.Log(_maxSpeed);
+    }
 
     public void BattleStart()
     {
-        if (_playerTest.Speed >= _enemyTest.Speed)
+        if (_playerTest.Speed >= _maxSpeed)
         {
             ChangeTurn(TurnEnum.PlayerTrun);
             Debug.Log("플레이어 턴");
@@ -36,13 +44,24 @@ public class TurnManager : MonoBehaviour
     }
     public void BattleEnd()
     {
-        if (_playerTest.Hp <= 0 || _enemyTest.Hp <= 0)
+        // 임시 if BattleManager에서 플레이어가 죽었으면 알리고
+        
+            // 패배 패널을 띄운다.
+        
+        // BattleManager에서 몬스터가 모두 죽었다고 알리면 승리 패널을 띄운다.
+    }
+    public void MaxSpeed()
+    {
+        if (data == null) return;
+        _maxSpeed = 0;
+        int MidSpeed;
+        for (int i = 0; i < data.Count; i++)
         {
-            ChangeTurn(TurnEnum.PlayerTrun);
-        }
-        else
-        {
-            ChangeTurn(TurnEnum.EnemyTurn);
+            MidSpeed = data[i].Speed;
+            if (MidSpeed > _maxSpeed)
+            {
+                _maxSpeed = MidSpeed;
+            }
         }
     }
 }

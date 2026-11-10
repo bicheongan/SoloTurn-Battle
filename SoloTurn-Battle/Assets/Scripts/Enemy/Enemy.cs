@@ -9,10 +9,4 @@ public class Enemy : MonoBehaviour
     public int Speed => _data.Speed;
     public bool IsDead => _currentHp <= 0;
 
-    public void Initialize(EnemyData data)
-    {
-        _data = data;
-        _currentHp = _data.HP;
-
-    }
 }

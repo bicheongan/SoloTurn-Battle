@@ -8,15 +8,8 @@ public class PlayerTest : MonoBehaviour
     [SerializeField] private int _defense = 5;
     [SerializeField] private int _speed = 5;
 
-    private int _currentHp;
-    private int _currentMp;
+    public int Hp => _maxHp;
+    public int Mp => _maxMp;
 
     public int Speed => _speed;
-    public int Hp => _maxHp;
-
-    private void Awake()
-    {
-        _currentHp = _maxHp;
-        _currentMp = _maxMp;
-    }
 }
