@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using System.Collections.Generic;
 
 public class TurnManager : MonoBehaviour
 {
-    [SerializeField]private PlayerTest _playerTest;
     private List<EnemyData> data;
+    private PlayerStates player;
     private int _maxSpeed;
     private TurnEnum _currentTurn = TurnEnum.None;
 
@@ -14,23 +14,26 @@ public class TurnManager : MonoBehaviour
 
     private void Start()
     {
+        player = GameManager.Instance.PlayerStates;
         data = BattleData.data;
         MaxSpeed();
         BattleStart();
         Debug.Log(_maxSpeed);
+        Debug.Log(player);
+        Debug.Log(player.Speed);
     }
 
     public void BattleStart()
     {
-        if (_playerTest.Speed >= _maxSpeed)
+        if (player.Speed >= _maxSpeed)
         {
             ChangeTurn(TurnEnum.PlayerTrun);
-            Debug.Log("ÇÃ·¹ÀÌ¾î ÅÏ");
+            Debug.Log("í”Œë ˆì´ì–´ í„´");
         }
         else
         {
             ChangeTurn(TurnEnum.EnemyTurn);
-            Debug.Log("Àû ÅÏ");
+            Debug.Log("ì  í„´");
         }
     }
     public void ChangeTurn(TurnEnum newTurn)
@@ -44,11 +47,11 @@ public class TurnManager : MonoBehaviour
     }
     public void BattleEnd()
     {
-        // ÀÓ½Ã if BattleManager¿¡¼­ ÇÃ·¹ÀÌ¾î°¡ Á×¾úÀ¸¸é ¾Ë¸®°í
+        // ì„ì‹œ if BattleManagerì—ì„œ í”Œë ˆì´ì–´ê°€ ì£½ì—ˆìœ¼ë©´ ì•Œë¦¬ê³ 
         
-            // ÆĞ¹è ÆĞ³ÎÀ» ¶ç¿î´Ù.
+            // íŒ¨ë°° íŒ¨ë„ì„ ë„ìš´ë‹¤.
         
-        // BattleManager¿¡¼­ ¸ó½ºÅÍ°¡ ¸ğµÎ Á×¾ú´Ù°í ¾Ë¸®¸é ½Â¸® ÆĞ³ÎÀ» ¶ç¿î´Ù.
+        // BattleManagerì—ì„œ ëª¬ìŠ¤í„°ê°€ ëª¨ë‘ ì£½ì—ˆë‹¤ê³  ì•Œë¦¬ë©´ ìŠ¹ë¦¬ íŒ¨ë„ì„ ë„ìš´ë‹¤.
     }
     public void MaxSpeed()
     {
