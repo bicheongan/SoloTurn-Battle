@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class TurnManager : MonoBehaviour
 {
+    [SerializeField] private BattleManager _battleManager;
     private List<EnemyData> data;
     private PlayerStates player;
     private int _maxSpeed;
@@ -44,6 +45,18 @@ public class TurnManager : MonoBehaviour
         _currentTurn = newTurn;
 
         OnTurnChanged?.Invoke(_currentTurn);
+
+        if (_currentTurn == TurnEnum.EnemyTurn)
+        {
+            _battleManager.EnemyAttack();
+            Debug.Log("몬스터 공격");
+            ChangeTurn(TurnEnum.PlayerTrun);
+            Debug.Log("플레이어 턴");
+        }
+        else if (_currentTurn == TurnEnum.PlayerTrun)
+        {
+            Debug.Log("플레이어 대기");
+        }
     }
     public void BattleEnd()
     {

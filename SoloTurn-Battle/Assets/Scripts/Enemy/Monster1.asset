@@ -15,7 +15,7 @@ MonoBehaviour:
   _monsterName: "\uBAAC\uC2A4\uD1301"
   _prefab: {fileID: 4807779217247352979, guid: 6639c16e774ba1c489f8ae6b5992ee2b, type: 3}
   _isBoss: 0
-  _hp: 10
+  _hp: 30
   _mp: 10
   _attack: 10
   _defend: 10

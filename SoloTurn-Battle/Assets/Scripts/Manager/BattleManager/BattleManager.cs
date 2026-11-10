@@ -6,6 +6,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Transform> _spawnPoints;
     [SerializeField] private Transform _playerPoint;
     [SerializeField] private GameObject _player;
+    [SerializeField] private TurnManager _turnManager;
     private List<EnemyData> data;
     private List<Enemy> enemies = new List<Enemy>();
 
@@ -42,5 +43,35 @@ public class BattleManager : MonoBehaviour
             }
             else { Debug.Log("오류남 확인해봐"); }
         }
+    }
+    // 기본 공격
+    public void PlayerAttack()
+    {
+        if (_turnManager.CurrentTurn != TurnEnum.PlayerTrun) return;
+        if (enemies.Count == 0)
+            return;
+
+        Enemy enemy = enemies[0];// 테스트
+
+        if (enemy.IsDead)
+            return;
+
+        enemy.TakeDamage(GameManager.Instance.PlayerStates.Attack);
+        Debug.Log("플레이어 기본 공격");
+
+        _turnManager.ChangeTurn(TurnEnum.EnemyTurn);
+    }
+
+    public void EnemyAttack()
+    {
+        if (enemies.Count == 0)
+            return;
+
+        Enemy enemy = enemies[0];
+
+        if (enemy.IsDead)
+            return;
+
+        GameManager.Instance.PlayerStates.TakeDamage(enemy.Attack);
     }
 }
