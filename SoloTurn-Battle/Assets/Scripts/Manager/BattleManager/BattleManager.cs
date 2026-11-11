@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,15 +8,20 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private Transform _playerPoint;
     [SerializeField] private GameObject _player;
     [SerializeField] private TurnManager _turnManager;
+    private EnemySelect _targetEnemy;
+    private bool allDead;
+    public bool AllIsDead => allDead;
     private List<EnemyData> data;
     private List<Enemy> enemies = new List<Enemy>();
+    private int enemycount;
 
-    private void Start()
+    private void Awake()
     {
         data = BattleData.data;
         Count();
         EnemySpawn();
         Debug.Log("적 데이터 호출");
+        _targetEnemy = GetComponent<EnemySelect>();
     }
     private void Count()
     {
@@ -48,32 +54,59 @@ public class BattleManager : MonoBehaviour
     public void PlayerAttack()
     {
         if (GameManager.Instance.PlayerStates.CurrentHp <= 0) return;
-        if (_turnManager.CurrentTurn != TurnEnum.PlayerTrun) return;
-        if (enemies.Count == 0)
-            return;
-
-        Enemy enemy = enemies[0];// 테스트
-
-        if (enemy.IsDead)
-            return;
-
+        if (_turnManager.CurrentTurn != TurnEnum.PlayerTurn) return;
+        if (enemies.Count == 0)return;
+        if (_targetEnemy.Target == null) return;
+        Enemy enemy = _targetEnemy.Target;
+        if (enemy.IsDead) return;
         enemy.TakeDamage(GameManager.Instance.PlayerStates.Attack);
         Debug.Log("플레이어 기본 공격");
 
+        enemycount = 0;
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            Enemy en=enemies[i];
+            if (en.IsDead == false)
+            {
+                enemycount++;
+            }
+            Debug.Log(enemycount);
+        }
+        
+        AllDead();
+
         _turnManager.ChangeTurn(TurnEnum.EnemyTurn);
     }
+    
+    // 몬스터턴에 몬스터들 공격
+    public event Action<bool> OnEnemies;
 
-    // 몬스터 공격
     public void EnemyAttack()
     {
-        if (enemies.Count == 0)
+        if (enemies.Count == 0) return;
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            Enemy enemy = enemies[i];
+            if (enemies[i].IsDead)
+            {
+                continue;
+            }
+
+            Debug.Log("총공격!!!");
+            GameManager.Instance.PlayerStates.TakeDamage(enemy.Attack);
+            _turnManager.BattleEnd();
+        }
+
+    }
+    public void AllDead()
+    {
+        if (enemycount == 0)
+        {
+            allDead = true;
+            Debug.Log("전멸");
+            _turnManager.ChangeTurn(TurnEnum.BattleEnd);
+            _turnManager.BattleEnd();
             return;
-
-        Enemy enemy = enemies[0];
-
-        if (enemy.IsDead)
-            return;
-
-        GameManager.Instance.PlayerStates.TakeDamage(enemy.Attack);
+        }
     }
 }

@@ -1,0 +1,55 @@
+{
+    "version": 1,
+    "name": "Input",
+    "maps": [
+        {
+            "name": "EnemySelect",
+            "id": "d739065d-0863-490b-ae43-c3e57acfbe72",
+            "actions": [
+                {
+                    "name": "EnemySelect",
+                    "type": "Button",
+                    "id": "543a70e2-f314-49a1-86d2-9a54c51e6782",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EnemyPosition",
+                    "type": "Value",
+                    "id": "882afcb7-1e27-4160-9cf0-2e02e3d1535c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5da01182-9ad3-4ce4-beae-a5a6af7eed6c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EnemySelect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4787a6fe-1f6e-4ac6-826f-d4e25d598871",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EnemyPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

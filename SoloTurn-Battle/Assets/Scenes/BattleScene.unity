@@ -367,6 +367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1511748151}
   - component: {fileID: 1511748152}
+  - component: {fileID: 1511748153}
   m_Layer: 0
   m_Name: BattleManager
   m_TagString: Untagged
@@ -408,6 +409,23 @@ MonoBehaviour:
   _playerPoint: {fileID: 93211871}
   _player: {fileID: 6906688518649125928, guid: fda388032ffdfa940b1f72af085a95eb, type: 3}
   _turnManager: {fileID: 2089614160}
+--- !u!114 &1511748153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511748149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc34ade159b2874d8f1fa778ddacfb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySelect
+  _enemy:
+    serializedVersion: 2
+    m_Bits: 64
+  _LeftMouse: {fileID: -2896841707353031793, guid: 5df3f5345a6d4c24e995b1eca01f75eb, type: 3}
+  _enemyPosition: {fileID: 547866694357573223, guid: 5df3f5345a6d4c24e995b1eca01f75eb, type: 3}
 --- !u!1 &1628256606
 GameObject:
   m_ObjectHideFlags: 0

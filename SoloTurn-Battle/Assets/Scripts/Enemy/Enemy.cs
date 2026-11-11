@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -9,7 +8,7 @@ public class Enemy : MonoBehaviour
     public float Hp => _currentHp;
     public float Attack => _data.Attack;
     public int Speed => _data.Speed;
-    public bool IsDead => _currentHp <= 0;
+    public bool IsDead;
 
     public void Initialize(EnemyData data)
     {
@@ -24,6 +23,7 @@ public class Enemy : MonoBehaviour
         _currentHp = Mathf.Max(_currentHp - damage, 0f);
         if (_currentHp <= 0) 
         {
+            IsDead = true;
             Debug.Log("적 사망");
             Destroy(gameObject);
         }

@@ -4,7 +4,7 @@ public enum TurnEnum
 { 
     None,
     BattleStart,
-    PlayerTrun,
+    PlayerTurn,
     EnemyTurn,
     BattleEnd
 }
