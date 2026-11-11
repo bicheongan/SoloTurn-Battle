@@ -19,7 +19,13 @@ public class Enemy : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
+        if(IsDead) return;
         damage = Mathf.Max(damage, 0f);
         _currentHp = Mathf.Max(_currentHp - damage, 0f);
+        if (_currentHp <= 0) 
+        {
+            Debug.Log("적 사망");
+            Destroy(gameObject);
+        }
     }
 }

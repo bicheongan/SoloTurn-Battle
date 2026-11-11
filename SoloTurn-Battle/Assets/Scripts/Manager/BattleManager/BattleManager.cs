@@ -47,6 +47,7 @@ public class BattleManager : MonoBehaviour
     // 기본 공격
     public void PlayerAttack()
     {
+        if (GameManager.Instance.PlayerStates.CurrentHp <= 0) return;
         if (_turnManager.CurrentTurn != TurnEnum.PlayerTrun) return;
         if (enemies.Count == 0)
             return;
@@ -62,6 +63,7 @@ public class BattleManager : MonoBehaviour
         _turnManager.ChangeTurn(TurnEnum.EnemyTurn);
     }
 
+    // 몬스터 공격
     public void EnemyAttack()
     {
         if (enemies.Count == 0)

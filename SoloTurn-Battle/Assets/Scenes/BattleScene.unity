@@ -1217,6 +1217,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1884532537}
     m_Modifications:
+    - target: {fileID: 1002356789523372904, guid: a6d596312646b1d40a97b6a916016c13, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002356789523372904, guid: a6d596312646b1d40a97b6a916016c13, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3697660705601384267, guid: a6d596312646b1d40a97b6a916016c13, type: 3}
       propertyPath: m_Name
       value: HPMP
@@ -1301,11 +1309,87 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7184812240740452973, guid: a6d596312646b1d40a97b6a916016c13, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7184812240740452973, guid: a6d596312646b1d40a97b6a916016c13, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3697660705601384267, guid: a6d596312646b1d40a97b6a916016c13, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2104943876932139162}
   m_SourcePrefab: {fileID: 100100000, guid: a6d596312646b1d40a97b6a916016c13, type: 3}
+--- !u!114 &2104943876932139157 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8150019931632145180, guid: a6d596312646b1d40a97b6a916016c13, type: 3}
+  m_PrefabInstance: {fileID: 2104943876932139156}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &2104943876932139158 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7184812240740452973, guid: a6d596312646b1d40a97b6a916016c13, type: 3}
+  m_PrefabInstance: {fileID: 2104943876932139156}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &2104943876932139159 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6886534754091710184, guid: a6d596312646b1d40a97b6a916016c13, type: 3}
+  m_PrefabInstance: {fileID: 2104943876932139156}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &2104943876932139160 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1002356789523372904, guid: a6d596312646b1d40a97b6a916016c13, type: 3}
+  m_PrefabInstance: {fileID: 2104943876932139156}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &2104943876932139161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3697660705601384267, guid: a6d596312646b1d40a97b6a916016c13, type: 3}
+  m_PrefabInstance: {fileID: 2104943876932139156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2104943876932139162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104943876932139161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a53da6b13df5f7a4481f15a6966751b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BattlehpmpBar
+  _hPText: {fileID: 2104943876932139159}
+  _hPBar: {fileID: 2104943876932139160}
+  _mPText: {fileID: 2104943876932139157}
+  _mPBar: {fileID: 2104943876932139158}
 --- !u!1001 &3784912550832519836
 PrefabInstance:
   m_ObjectHideFlags: 0
