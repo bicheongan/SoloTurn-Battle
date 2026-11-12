@@ -12,7 +12,7 @@ public class PlayerStates
     [SerializeField] private float _defend = 5;
     [SerializeField] private int _speed = 5;
     public float MaxHp => _maxHp;
-    public float CurrentHp { get { return _currentHp; } set{ value = _currentHp; } }
+    public float CurrentHp { get { return _currentHp; } set{ _currentHp = value; } }
     public int MaxMp => _maxMp;
     public int CurrentMp => _currentMp;
     public float Attack => _attack;

@@ -5,16 +5,28 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {  get; private set; }
     [SerializeField]private PlayerStates _playerStates;
+    [SerializeField] private int _itemMax = 999;
+    [SerializeField] private int _growthItem;
     public PlayerStates PlayerStates => _playerStates;
+    public int ItemMax => _itemMax;
+    public int GrowthItem => _growthItem;
 
 
     private void Awake()
     {
         SetSingleton();
-        
-        Debug.Log(PlayerStates.CurrentHp);
     }
-
+    public void ItemAdd()
+    {
+        _growthItem += GrowthItemdata.itemamount;
+        if (_itemMax <= _growthItem)
+        {
+            _growthItem = _itemMax;
+            Debug.Log("가득참");
+        }
+        Debug.Log(_growthItem);
+        GrowthItemdata.itemamount = 0;
+    }
     private void SetSingleton()
     {
         if(Instance != null && Instance != this)
@@ -24,6 +36,7 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         _playerStates.Init();
+        ItemAdd();
         DontDestroyOnLoad(gameObject);
     }
 }
