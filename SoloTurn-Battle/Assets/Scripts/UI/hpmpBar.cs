@@ -23,8 +23,8 @@ public class hpmpBar : MonoBehaviour
     private void UpdateHpMpBar(float maxhp, float currenthp, int maxmp, int currentmp)
     {
         _hPText.text = $"{maxhp}/{currenthp}";
-        _hPBar.fillAmount = maxhp / currenthp;
+        _hPBar.fillAmount = currenthp / maxhp;
         _mPText.text = $"{maxmp}/{currentmp}";
-        _mPBar.fillAmount = maxmp / currentmp;
+        _mPBar.fillAmount = currentmp / maxmp;
     }
 }

@@ -79,8 +79,6 @@ public class BattleManager : MonoBehaviour
     }
     
     // 몬스터턴에 몬스터들 공격
-    public event Action<bool> OnEnemies;
-
     public void EnemyAttack()
     {
         if (enemies.Count == 0) return;
@@ -94,7 +92,11 @@ public class BattleManager : MonoBehaviour
 
             Debug.Log("총공격!!!");
             GameManager.Instance.PlayerStates.TakeDamage(enemy.Attack);
-            _turnManager.BattleEnd();
+            if (GameManager.Instance.PlayerStates.CurrentHp <= 0) 
+            {
+                _turnManager.BattleEnd();
+                return;
+            }
         }
 
     }

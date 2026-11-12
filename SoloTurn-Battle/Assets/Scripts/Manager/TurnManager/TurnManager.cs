@@ -48,6 +48,7 @@ public class TurnManager : MonoBehaviour
         if (_battleManager.AllIsDead) return;
         if (_currentTurn == TurnEnum.EnemyTurn)
         {
+
             _battleManager.EnemyAttack();
             Debug.Log("몬스터 공격");
             if (GameManager.Instance.PlayerStates.IsDead)
@@ -64,12 +65,15 @@ public class TurnManager : MonoBehaviour
             Debug.Log("플레이어 대기");
         }
     }
+    public event Action OnWinPanel;
+    public event Action OnLosePanel;
     public void BattleEnd()
     {
         if (GameManager.Instance.PlayerStates.IsDead)
         {
             Debug.Log(" 플레이어 사망");
             Debug.Log("졌당ㅠㅠ");
+            OnLosePanel?.Invoke();
             //패배패널 띄우기
             return;
 
@@ -77,6 +81,7 @@ public class TurnManager : MonoBehaviour
         if (_battleManager.AllIsDead)
         {
             Debug.Log("d이겼당");
+            OnWinPanel?.Invoke();
             return;
         }
         

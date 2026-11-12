@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         SetSingleton();
-        _playerStates.Init();
+        
         Debug.Log(PlayerStates.CurrentHp);
     }
 
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
+        _playerStates.Init();
         DontDestroyOnLoad(gameObject);
     }
 }
