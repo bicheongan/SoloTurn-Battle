@@ -23,7 +23,7 @@ public class EnemySelect : MonoBehaviour
     }
     private void OnDisable()
     {
-        _LeftMouse.action.canceled -= OnEnemySelect;
+        _LeftMouse.action.performed -= OnEnemySelect;
         _LeftMouse.action.Disable();
         _enemyPosition.action.Disable();
     }

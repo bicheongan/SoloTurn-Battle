@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("가득참");
         }
         Debug.Log(_growthItem);
-        GrowthItemdata.itemamount = 0;
     }
     private void SetSingleton()
     {
@@ -36,7 +35,6 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         _playerStates.Init();
-        ItemAdd();
         DontDestroyOnLoad(gameObject);
     }
 }

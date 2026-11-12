@@ -23,23 +23,23 @@ public class StatesUI : MonoBehaviour
     {
         if(_hPText != null)
         {
-            _hPText.text = $"500 /{ currenthp}";
+            _hPText.text = $"{currenthp}/500";
         }
         if (_mPText != null)
         {
-            _mPText.text = $"500 /{currentmp}";
+            _mPText.text = $"{currentmp}/500";
         }
         if (_attackText != null)
         {
-            _attackText.text = $"500 /{attack}";
+            _attackText.text = $"{attack}/500";
         }
         if (_defendText != null)
         {
-            _defendText.text = $"500 /{defend}";
+            _defendText.text = $"{defend}/500";
         }
         if (_speedText != null)
         {
-            _speedText.text = $"500 /{speed}";
+            _speedText.text = $"{speed}/500";
         }
     }
 }
