@@ -1066,8 +1066,24 @@ MonoBehaviour:
     _attack: 10
     _defend: 0
     _speed: 5
+    _maxTrainingHp: 500
+    _maxTrainingMp: 500
+    _maxTrainingAttack: 500
+    _maxTrainingDefend: 500
+    _maxTrainingSpeed: 100
+    _trainingMaxHp: 10
+    _trainingMaxMp: 10
+    _trainingAttack: 10
+    _trainingDefend: 10
+    _trainingSpeed: 10
+    _istrainingMaxHp: 0
+    _istrainingMaxMp: 0
+    _istrainingAttack: 0
+    _istrainingDefend: 0
+    _istrainingSpeed: 0
   _itemMax: 999
-  _growthItem: 0
+  _growthItem: 999
+  _useItem: 10
 --- !u!4 &1227062858
 Transform:
   m_ObjectHideFlags: 0
@@ -1197,6 +1213,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 543283638}
     m_Modifications:
+    - target: {fileID: 3441279076647562801, guid: 4c27ac6b42aa7784697bc1e366088c91, type: 3}
+      propertyPath: m_text
+      value: 999/999
+      objectReference: {fileID: 0}
     - target: {fileID: 5915778931729478383, guid: 4c27ac6b42aa7784697bc1e366088c91, type: 3}
       propertyPath: m_Pivot.x
       value: 0

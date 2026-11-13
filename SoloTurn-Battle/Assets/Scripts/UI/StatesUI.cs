@@ -12,34 +12,34 @@ public class StatesUI : MonoBehaviour
 
     private void Start()
     {
-        UpdateStates(
-            GameManager.Instance.PlayerStates.CurrentHp, 
-            GameManager.Instance.PlayerStates.CurrentMp,
-            GameManager.Instance.PlayerStates.Attack,
-            GameManager.Instance.PlayerStates.Defense,
-            GameManager.Instance.PlayerStates.Speed);
+        UpdateStates();
     }
-    private void UpdateStates( float currenthp, int currentmp, float attack, float defend, int speed )
+    public void UpdateStates()
     {
         if(_hPText != null)
         {
-            _hPText.text = $"{currenthp}/500";
+            _hPText.text = $"{GameManager.Instance.PlayerStates.CurrentHp}/" +
+                $"{GameManager.Instance.PlayerStates.MaxTrainingHp}";
         }
         if (_mPText != null)
         {
-            _mPText.text = $"{currentmp}/500";
+            _mPText.text = $"{GameManager.Instance.PlayerStates.CurrentMp}/" +
+                $"{GameManager.Instance.PlayerStates.MaxTrainingMp}";
         }
         if (_attackText != null)
         {
-            _attackText.text = $"{attack}/500";
+            _attackText.text = $"{GameManager.Instance.PlayerStates.Attack}/" +
+                $"{GameManager.Instance.PlayerStates.MaxTrainingAttack}";
         }
         if (_defendText != null)
         {
-            _defendText.text = $"{defend}/500";
+            _defendText.text = $"{GameManager.Instance.PlayerStates.Defense}/" +
+                $"{GameManager.Instance.PlayerStates.MaxTrainingDefend}";
         }
         if (_speedText != null)
         {
-            _speedText.text = $"{speed}/500";
+            _speedText.text = $"{GameManager.Instance.PlayerStates.Speed}/" +
+                $"{GameManager.Instance.PlayerStates.MaximumTrainingSpeed}";
         }
     }
 }

@@ -7,13 +7,13 @@ public class GrowthItemAmountUI : MonoBehaviour
 
     private void Start()
     {
-        UpdateGrowthText(GameManager.Instance.ItemMax, GameManager.Instance.GrowthItem);
+        UpdateGrowthText();
     }
 
 
 
-    private void UpdateGrowthText(int maxgrowthamount, int growthamount)
+    public void UpdateGrowthText()
     {
-        _growthText.text = $"{ maxgrowthamount} / { growthamount}";
+        _growthText.text = $"{GameManager.Instance.GrowthItem} / {GameManager.Instance.ItemMax}";
     }
 }
