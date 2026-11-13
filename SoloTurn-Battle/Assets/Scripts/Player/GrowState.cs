@@ -19,6 +19,7 @@ public class GrowState : MonoBehaviour
             Debug.Log("강화성공");
             _statesUI.UpdateStates();
             _growthItemAmountUI.UpdateGrowthText();
+
         }
     }
 }

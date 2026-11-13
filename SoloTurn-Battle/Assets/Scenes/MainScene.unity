@@ -1059,7 +1059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   _playerStates:
-    _maxHp: 10000
+    _maxHp: 400
     _currentHp: 0
     _maxMp: 50
     _currentMp: 50
@@ -1301,6 +1301,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemAmount
       objectReference: {fileID: 0}
+    - target: {fileID: 7390410535563239220, guid: 4c27ac6b42aa7784697bc1e366088c91, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 02c42b8d5557da847a345fb4ba9abab8, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

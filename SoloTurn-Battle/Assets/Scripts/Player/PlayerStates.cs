@@ -34,6 +34,11 @@ public class PlayerStates
     [SerializeField] private float _trainingAttack = 10;
     [SerializeField] private float _trainingDefend = 10;
     [SerializeField] private int _trainingSpeed = 10;
+    public float TrainingMaxHp => _trainingMaxHp;
+    public int TrainingMaxMp => _trainingMaxMp;
+    public float TrainingAttack => _trainingAttack;
+    public float TrainingDefend => _trainingDefend;
+    public int TrainingSpeed => _trainingSpeed;
 
     [Header("최대강화 여부체크")]
     [SerializeField] private bool _istrainingMaxHp;
