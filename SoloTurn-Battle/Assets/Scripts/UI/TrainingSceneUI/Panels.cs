@@ -9,8 +9,9 @@ public class Panels : MonoBehaviour
     public void OpenPanel()
     {
         _panel.SetActive(true);
+        ClosePanel();
     }
-    public void ClosePanel()
+    private void ClosePanel()
     {
         for (int i = 0; i < _panels.Count; i++)
         {

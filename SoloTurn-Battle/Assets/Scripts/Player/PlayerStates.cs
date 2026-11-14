@@ -24,7 +24,7 @@ public class PlayerStates
     public int MaxTrainingMp => _maxTrainingMp;
     public float MaxTrainingAttack => _maxTrainingAttack;
     public float MaxTrainingDefend => _maxTrainingDefend;
-    public int MaximumTrainingSpeed => _maxTrainingSpeed;
+    public int MaxTrainingSpeed => _maxTrainingSpeed;
 
 
 

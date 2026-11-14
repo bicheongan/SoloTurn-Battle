@@ -166,6 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 146519634}
   - component: {fileID: 146519635}
+  - component: {fileID: 146519636}
   m_Layer: 5
   m_Name: MpTextUp
   m_TagString: Untagged
@@ -204,7 +205,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cfae92c3e6b5c74ebc76eaf2402e6cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MpText
-  _text: {fileID: 390265781}
+--- !u!114 &146519636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146519633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7a6d82651ea254bb1a291739463c1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpStateText
+  _text: {fileID: 656832411}
+  _enumText: 2
 --- !u!1 &154167690
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +231,7 @@ GameObject:
   - component: {fileID: 154167692}
   - component: {fileID: 154167691}
   m_Layer: 5
-  m_Name: HpUp
+  m_Name: DefendUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -353,7 +367,7 @@ GameObject:
   - component: {fileID: 163849762}
   - component: {fileID: 163849761}
   m_Layer: 0
-  m_Name: HpGrowth
+  m_Name: SpeedGrowth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -371,8 +385,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3df09b0b13ed9641b18f0b5448d0f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrowState
-  _state: 1
-  _isMaxState: 1
+  _state: 5
+  _isMaxState: 5
   _statesUI: {fileID: 674400097}
   _growthItemAmountUI: {fileID: 1889289805}
 --- !u!4 &163849762
@@ -545,7 +559,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &234719446
 RectTransform:
   m_ObjectHideFlags: 0
@@ -584,8 +598,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HpPanel
   _panel: {fileID: 234719445}
   _panels:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 508582855}
+  - {fileID: 2028657937}
+  - {fileID: 1836666675}
+  - {fileID: 1307893603}
 --- !u!114 &234719448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,7 +725,7 @@ GameObject:
   m_Component:
   - component: {fileID: 302178172}
   m_Layer: 5
-  m_Name: Hp
+  m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -995,20 +1011,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 508582859}
-        m_TargetAssemblyTypeName: HpPanel, Assembly-CSharp
-        m_MethodName: OpenPanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 508582859}
         m_TargetAssemblyTypeName: Panels, Assembly-CSharp
-        m_MethodName: ClosePanel
+        m_MethodName: OpenPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1426,8 +1430,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 725488377}
-        m_TargetAssemblyTypeName: HpText, Assembly-CSharp
-        m_MethodName: UpHpText
+        m_TargetAssemblyTypeName: UpStateText, Assembly-CSharp
+        m_MethodName: UpText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1485,7 +1489,7 @@ GameObject:
   m_Component:
   - component: {fileID: 450582326}
   m_Layer: 5
-  m_Name: Hp
+  m_Name: Defend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1569,7 +1573,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8641dd2261d12784fb671c5e6373a5fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc5449e24c8e8b14b83fd9d51a7288b7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1605,7 +1609,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &508582856
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1682,8 +1686,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HpPanel
   _panel: {fileID: 508582855}
   _panels:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2028657937}
+  - {fileID: 234719445}
+  - {fileID: 1836666675}
+  - {fileID: 1307893603}
 --- !u!1 &513380142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,7 +1839,7 @@ GameObject:
   - component: {fileID: 542757228}
   - component: {fileID: 542757227}
   m_Layer: 5
-  m_Name: HpUp
+  m_Name: SpeedUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2045,7 +2051,7 @@ GameObject:
   - component: {fileID: 581705879}
   - component: {fileID: 581705878}
   m_Layer: 5
-  m_Name: HpUp
+  m_Name: AttackUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2181,7 +2187,7 @@ GameObject:
   - component: {fileID: 585492857}
   - component: {fileID: 585492858}
   m_Layer: 5
-  m_Name: HpTextUp
+  m_Name: AttackTextUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2219,6 +2225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HpText
   _text: {fileID: 581705878}
+  _enumText: 3
 --- !u!1 &601762283
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,8 +2322,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1764258589}
-        m_TargetAssemblyTypeName: HpText, Assembly-CSharp
-        m_MethodName: UpHpText
+        m_TargetAssemblyTypeName: UpStateText, Assembly-CSharp
+        m_MethodName: UpText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3401,6 +3408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HpText
   _text: {fileID: 1935028154}
+  _enumText: 1
 --- !u!1 &874740733
 GameObject:
   m_ObjectHideFlags: 0
@@ -3793,7 +3801,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8641dd2261d12784fb671c5e6373a5fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2315c31fbe0e47d44ac67e82a15ef1b5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3894,7 +3902,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 967563887}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1836666677}
+        m_TargetAssemblyTypeName: Panels, Assembly-CSharp
+        m_MethodName: OpenPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &967563887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4166,8 +4186,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 585492858}
-        m_TargetAssemblyTypeName: HpText, Assembly-CSharp
-        m_MethodName: UpHpText
+        m_TargetAssemblyTypeName: UpStateText, Assembly-CSharp
+        m_MethodName: UpText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4226,7 +4246,7 @@ GameObject:
   - component: {fileID: 1208679757}
   - component: {fileID: 1208679756}
   m_Layer: 0
-  m_Name: HpGrowth
+  m_Name: AttackGrowth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4244,8 +4264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3df09b0b13ed9641b18f0b5448d0f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrowState
-  _state: 1
-  _isMaxState: 1
+  _state: 3
+  _isMaxState: 3
   _statesUI: {fileID: 674400097}
   _growthItemAmountUI: {fileID: 1889289805}
 --- !u!4 &1208679757
@@ -4541,7 +4561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1307893604
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4580,8 +4600,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HpPanel
   _panel: {fileID: 1307893603}
   _panels:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 508582855}
+  - {fileID: 2028657937}
+  - {fileID: 234719445}
+  - {fileID: 1836666675}
 --- !u!114 &1307893606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4898,8 +4920,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1771005380}
-        m_TargetAssemblyTypeName: HpText, Assembly-CSharp
-        m_MethodName: UpHpText
+        m_TargetAssemblyTypeName: UpStateText, Assembly-CSharp
+        m_MethodName: UpText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4947,6 +4969,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1339460430}
   m_CullTransparentMesh: 1
+--- !u!1 &1359952582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1359952584}
+  - component: {fileID: 1359952583}
+  m_Layer: 0
+  m_Name: SceneChanger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1359952583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359952582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac882c496ed9c94391ebb701df1f85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
+--- !u!4 &1359952584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359952582}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 651.8264, y: 623.9049, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1364758714
 GameObject:
   m_ObjectHideFlags: 0
@@ -5232,7 +5298,7 @@ GameObject:
   - component: {fileID: 1566918149}
   - component: {fileID: 1566918148}
   m_Layer: 0
-  m_Name: HpGrowth
+  m_Name: DefendGrowth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5250,8 +5316,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3df09b0b13ed9641b18f0b5448d0f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrowState
-  _state: 1
-  _isMaxState: 1
+  _state: 4
+  _isMaxState: 4
   _statesUI: {fileID: 674400097}
   _growthItemAmountUI: {fileID: 1889289805}
 --- !u!4 &1566918149
@@ -5489,7 +5555,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1603938207}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1307893605}
+        m_TargetAssemblyTypeName: Panels, Assembly-CSharp
+        m_MethodName: OpenPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1603938207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5660,7 +5738,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8641dd2261d12784fb671c5e6373a5fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba375e6f543447f4dabaa63c197cdeaf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5873,7 +5951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1697185985}
   m_Layer: 5
-  m_Name: Hp
+  m_Name: Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6129,7 +6207,7 @@ GameObject:
   - component: {fileID: 1764258588}
   - component: {fileID: 1764258589}
   m_Layer: 5
-  m_Name: HpTextUp
+  m_Name: SpeedTextUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6167,6 +6245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HpText
   _text: {fileID: 542757227}
+  _enumText: 5
 --- !u!1 &1771005378
 GameObject:
   m_ObjectHideFlags: 0
@@ -6178,7 +6257,7 @@ GameObject:
   - component: {fileID: 1771005379}
   - component: {fileID: 1771005380}
   m_Layer: 5
-  m_Name: HpTextUp
+  m_Name: DefendTextUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6216,6 +6295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HpText
   _text: {fileID: 154167691}
+  _enumText: 4
 --- !u!1 &1773735367
 GameObject:
   m_ObjectHideFlags: 0
@@ -6299,7 +6379,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1773735370}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 234719447}
+        m_TargetAssemblyTypeName: Panels, Assembly-CSharp
+        m_MethodName: OpenPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1773735370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6396,7 +6488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1836666676
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6435,8 +6527,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HpPanel
   _panel: {fileID: 1836666675}
   _panels:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 508582855}
+  - {fileID: 2028657937}
+  - {fileID: 234719445}
+  - {fileID: 1307893603}
 --- !u!114 &1836666678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6828,6 +6922,78 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5336991609708007850, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336991609708007850, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336991609708007850, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1359952583}
+    - target: {fileID: 5336991609708007850, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336991609708007850, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SceneChange
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336991609708007850, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneChanger, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336991609708007850, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: MainScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336991609708007850, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759020992235884738, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759020992235884738, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759020992235884738, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759020992235884738, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000016212
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222248697665011440, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_text
+      value: "\uB098\uAC00\uAE30"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222248697665011440, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_margin.w
+      value: 1.0296311
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222248697665011440, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_margin.x
+      value: 0.23301601
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222248697665011440, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_margin.y
+      value: 0.29898882
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222248697665011440, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_margin.z
+      value: -0.8104677
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222248697665011440, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 7326023462740229310, guid: fc2a355cda0fb1043abccb84be303c56, type: 3}
       propertyPath: m_Name
       value: SettingButton
@@ -6937,9 +7103,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: HpText, Assembly-CSharp
-        m_MethodName: UpHpText
+      - m_Target: {fileID: 146519636}
+        m_TargetAssemblyTypeName: UpStateText, Assembly-CSharp
+        m_MethodName: UpText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7208,7 +7374,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2028657939}
         m_TargetAssemblyTypeName: Panels, Assembly-CSharp
         m_MethodName: OpenPanel
         m_Mode: 1
@@ -7580,7 +7746,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2028657938
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7619,8 +7785,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HpPanel
   _panel: {fileID: 2028657937}
   _panels:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 508582855}
+  - {fileID: 234719445}
+  - {fileID: 1836666675}
+  - {fileID: 1307893603}
 --- !u!114 &2028657940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7805,3 +7973,4 @@ SceneRoots:
   - {fileID: 1325097167}
   - {fileID: 1221422371}
   - {fileID: 1884520695}
+  - {fileID: 1359952584}

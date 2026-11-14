@@ -39,7 +39,7 @@ public class StatesUI : MonoBehaviour
         if (_speedText != null)
         {
             _speedText.text = $"{GameManager.Instance.PlayerStates.Speed}/" +
-                $"{GameManager.Instance.PlayerStates.MaximumTrainingSpeed}";
+                $"{GameManager.Instance.PlayerStates.MaxTrainingSpeed}";
         }
     }
 }
