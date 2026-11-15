@@ -1,6 +1,6 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,14 +9,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _itemMax = 999;
     [SerializeField] private int _growthItem;
     [SerializeField] private int _useItem = 10;
+    [SerializeField] private int _totalDate = 100;
+    private int _remainDay;
     public PlayerStates PlayerStates => _playerStates;
     public int ItemMax => _itemMax;
     public int GrowthItem => _growthItem;
+    public int TotalDate => _totalDate;
+    public int RemainDay => _remainDay;
 
+    private GameOverPanel gameOverPanel;
+    public event Action OnGameOver;
 
     private void Awake()
     {
         SetSingleton();
+        _remainDay = _totalDate;
     }
     public void ItemAdd()
     {
@@ -42,6 +49,23 @@ public class GameManager : MonoBehaviour
             IsSucess=false;
         }
         return IsSucess;
+    }
+    public void UseTime(int usedays)
+    {
+        if (_remainDay > 0)
+        {
+            _remainDay -= usedays;
+        }
+    }
+    public void DateCheck()
+    {
+        if (_remainDay <= 0)
+        {
+            SceneManager.LoadScene("MainScene");
+            OnGameOver?.Invoke();
+            Time.timeScale = 0;
+            Debug.Log("게임오버");
+        }
     }
     private void SetSingleton()
     {
