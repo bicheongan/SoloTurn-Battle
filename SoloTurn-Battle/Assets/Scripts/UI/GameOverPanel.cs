@@ -16,4 +16,12 @@ public class GameOverPanel : MonoBehaviour
         _gameOverPanel.SetActive(true);
     }
 
+    public void ResetGame()
+    {
+        GameManager.Instance.ResetGame("MainScene");
+    }
+    public void ResetExit()
+    {
+        GameManager.Instance.ResetGame("TitleScene");
+    }
 }

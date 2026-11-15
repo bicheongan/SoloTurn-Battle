@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     public int RemainDay => _remainDay;
 
     private GameOverPanel gameOverPanel;
-    public event Action OnGameOver;
 
     private void Awake()
     {
@@ -62,10 +61,19 @@ public class GameManager : MonoBehaviour
         if (_remainDay <= 0)
         {
             SceneManager.LoadScene("MainScene");
-            OnGameOver?.Invoke();
             Time.timeScale = 0;
             Debug.Log("게임오버");
         }
+    }
+    public void ResetGame(string name)
+    {
+        Time.timeScale = 1;
+        _remainDay = _totalDate;
+        _growthItem = 0;
+        _playerStates.ResetStates();
+        _playerStates.Init();
+
+        SceneManager.LoadScene(name);
     }
     private void SetSingleton()
     {
@@ -76,6 +84,7 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         _playerStates.Init();
+        _playerStates.SaveBaseStates();
         DontDestroyOnLoad(gameObject);
     }
 }

@@ -62,6 +62,13 @@ public class PlayerStates
     private EnumStates _stateType = EnumStates.None;
     private IsMax _ismax = IsMax.None;
 
+    //스탯 저장 데이터
+    private float _saveHp;
+    private int _saveMp;
+    private float _saveAttack;
+    private float _saveDefend;
+    private int _saveSpeed;
+
     public void Init()
     {
         _currentHp = _maxHp;
@@ -71,6 +78,28 @@ public class PlayerStates
     {
         damage = Mathf.Max(damage, 0f);
         _currentHp = Mathf.Max(_currentHp - damage, 0f);
+    }
+    public void SaveBaseStates()
+    {
+        _saveHp = _maxHp;
+        _saveMp = _maxMp;
+        _saveAttack = _attack;
+        _saveDefend = _defend;
+        _saveSpeed = _speed;
+    }
+    public void ResetStates()
+    {
+        _maxHp = _saveHp;
+        _maxMp = _saveMp;
+        _attack = _saveSpeed;
+        _defend = _saveDefend;
+        _speed = _saveSpeed;
+
+        _istrainingMaxHp = false;
+        _istrainingMaxMp = false;
+        _istrainingAttack = false;
+        _istrainingDefend = false;
+        _istrainingSpeed = false;
     }
     public void TrainngState()
     {
