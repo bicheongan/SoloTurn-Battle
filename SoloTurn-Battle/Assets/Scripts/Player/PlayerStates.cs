@@ -54,7 +54,7 @@ public class PlayerStates
     public float MaxHp => _maxHp;
     public float CurrentHp { get { return _currentHp; } set { _currentHp = value; } }
     public int MaxMp => _maxMp;
-    public int CurrentMp => _currentMp;
+    public int CurrentMp { get { return _currentMp; } set { _currentMp = value; } }
     public float Attack => _attack;
     public float Defense => _defend;
     public int Speed => _speed;

@@ -16,7 +16,7 @@ public class StageClearManager : MonoBehaviour
     {
         if(GameManager.Instance.ClearCount <4)
         {
-            for (int i = 1; 0 < _button.Count; i++)
+            for (int i = 1; i < _button.Count; i++)
             {
                 _button[i].interactable = false;
             }

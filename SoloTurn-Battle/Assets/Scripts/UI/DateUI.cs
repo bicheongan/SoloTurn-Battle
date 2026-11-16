@@ -8,7 +8,7 @@ public class DateUI : MonoBehaviour
     {
         DateText();
     }
-    private void DateText()
+    public void DateText()
     {
         _dateText.text = $"{GameManager.Instance.RemainDay}/{GameManager.Instance.TotalDate}";
     }
