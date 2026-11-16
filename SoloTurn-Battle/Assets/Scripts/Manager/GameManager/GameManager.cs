@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,14 +10,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _growthItem;
     [SerializeField] private int _useItem = 10;
     [SerializeField] private int _totalDate = 100;
-    [SerializeField] private List<Scene> _scene;
-    private int _clearCount;
+    [SerializeField]private int _clearCount;
     private int _remainDay;
     public PlayerStates PlayerStates => _playerStates;
     public int ItemMax => _itemMax;
     public int GrowthItem => _growthItem;
     public int TotalDate => _totalDate;
     public int RemainDay => _remainDay;
+    public int ClearCount => _clearCount;
 
     // 어떤 스테이지인지 판단
     public StageEnum _stageEnum = StageEnum.None;
@@ -78,12 +77,12 @@ public class GameManager : MonoBehaviour
         _growthItem = 0;
         _playerStates.ResetStates();
         _playerStates.Init();
-
+        _clearCount = 0;
         SceneManager.LoadScene(name);
     }
-    public void ClearCheck()
+    public void AddCount()
     {
-
+        _clearCount++;
     }
     private void SetSingleton()
     {
