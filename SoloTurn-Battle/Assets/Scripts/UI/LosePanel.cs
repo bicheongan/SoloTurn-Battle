@@ -1,8 +1,10 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class LosePanel : MonoBehaviour
 {
     [SerializeField] private GameObject _losePanel;
+    [SerializeField]private GameObject _stageLosePanel;
     [SerializeField] private TurnManager _turnManager;
 
     private void Start()
@@ -12,7 +14,15 @@ public class LosePanel : MonoBehaviour
 
     private void OnLose()
     {
-        _losePanel.SetActive(true);
+        if (GameManager.Instance._stageEnum == StageEnum.Battle)
+        {
+            _losePanel.SetActive(true);
+        }
+        if (GameManager.Instance._stageEnum == StageEnum.Battle || GameManager.Instance._stageEnum == StageEnum.Boss)
+        {
+            _stageLosePanel.SetActive(true);
+        }
+    
     }
     private void OnDestroy()
     {

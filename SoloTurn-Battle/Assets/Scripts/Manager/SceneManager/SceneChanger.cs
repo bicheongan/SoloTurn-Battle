@@ -18,4 +18,8 @@ public class SceneChanger : MonoBehaviour
         CloseScene?.Invoke();
         SceneManager.UnloadSceneAsync("BattleScene");
     }
+    public void RestNode()
+    {
+        CloseScene?.Invoke();
+    }
 }

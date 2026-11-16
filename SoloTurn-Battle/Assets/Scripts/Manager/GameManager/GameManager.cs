@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _growthItem;
     [SerializeField] private int _useItem = 10;
     [SerializeField] private int _totalDate = 100;
+    [SerializeField] private List<Scene> _scene;
+    private int _clearCount;
     private int _remainDay;
     public PlayerStates PlayerStates => _playerStates;
     public int ItemMax => _itemMax;
@@ -25,6 +28,7 @@ public class GameManager : MonoBehaviour
     {
         SetSingleton();
         _remainDay = _totalDate;
+        _clearCount = 0;
     }
     public void ItemAdd()
     {
@@ -76,6 +80,10 @@ public class GameManager : MonoBehaviour
         _playerStates.Init();
 
         SceneManager.LoadScene(name);
+    }
+    public void ClearCheck()
+    {
+
     }
     private void SetSingleton()
     {

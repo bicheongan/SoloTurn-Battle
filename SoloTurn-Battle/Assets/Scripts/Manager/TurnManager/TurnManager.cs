@@ -73,10 +73,9 @@ public class TurnManager : MonoBehaviour
         {
             Debug.Log(" 플레이어 사망");
             Debug.Log("졌당ㅠㅠ");
-            if (GameManager.Instance._stageEnum == StageEnum.Dungeon)
-            {
-                OnLosePanel?.Invoke();
-            }
+
+            OnLosePanel?.Invoke();
+
             //패배패널 띄우기
             return;
 
