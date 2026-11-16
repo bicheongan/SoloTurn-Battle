@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 public class SceneChanger : MonoBehaviour
 {
+    public static event Action CloseScene;
     public void SceneChange(string changeScene)
     {
         SceneManager.LoadScene(changeScene);
@@ -11,5 +12,10 @@ public class SceneChanger : MonoBehaviour
     public void EnterBattle()
     {
         SceneManager.LoadScene("BattleScene");
+    }
+    public void CloseBattleScene()
+    {
+        CloseScene?.Invoke();
+        SceneManager.UnloadSceneAsync("BattleScene");
     }
 }

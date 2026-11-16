@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour
     public int TotalDate => _totalDate;
     public int RemainDay => _remainDay;
 
-    private GameOverPanel gameOverPanel;
+    // 어떤 스테이지인지 판단
+    public StageEnum _stageEnum = StageEnum.None;
+
 
     private void Awake()
     {

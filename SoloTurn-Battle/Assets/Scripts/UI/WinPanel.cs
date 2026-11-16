@@ -3,6 +3,7 @@ using UnityEngine;
 public class WinPanel : MonoBehaviour
 {
     [SerializeField] private GameObject _gameWinPanel;
+    [SerializeField] private GameObject _StageWInPanel;
     [SerializeField]private TurnManager _turnManager;
 
     private void Start()
@@ -14,7 +15,14 @@ public class WinPanel : MonoBehaviour
 
     private void OnWin()
     {
-        _gameWinPanel.SetActive(true);
+        if (GameManager.Instance._stageEnum == StageEnum.Dungeon)
+        {
+            _gameWinPanel.SetActive(true);
+        }
+        if (GameManager.Instance._stageEnum == StageEnum.Battle)
+        {
+            _StageWInPanel.SetActive(true);
+        }
     }
     private void OnDestroy()
     {
