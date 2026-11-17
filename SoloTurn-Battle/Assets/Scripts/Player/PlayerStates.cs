@@ -91,7 +91,7 @@ public class PlayerStates
     {
         _maxHp = _saveHp;
         _maxMp = _saveMp;
-        _attack = _saveSpeed;
+        _attack = _saveAttack;
         _defend = _saveDefend;
         _speed = _saveSpeed;
 

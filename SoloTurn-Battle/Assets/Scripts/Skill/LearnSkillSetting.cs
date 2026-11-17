@@ -9,7 +9,9 @@ public class LearnSkillSetting : MonoBehaviour
 
     public void LearnSkill()
     {
-        GameManager.Instance.CanLearnSkills(_skill);
-        _button.interactable = false;
+        if (GameManager.Instance.CanLearnSkills(_skill) == true)
+        {
+            _button.interactable = false;
+        }
     }
 }

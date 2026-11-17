@@ -1,17 +1,30 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class SkillSetting : MonoBehaviour
 {
-    [SerializeField] private int num1 = 0;
-    [SerializeField] private int num2 = 0;
+    [SerializeField]private SkillData _skill;
+    [SerializeField] private GameObject _set; 
+    [SerializeField] private GameObject _out; 
 
-    public void SetSkill()
+    public void SkillSetOut()
     {
-        GameManager.Instance.SkillDataList.SettingInSkill(num1, num2);
-    }
-    public void OutSkill()
-    {
-        // 집에서 할거 조회기능 필요하면, 초기화 메서드 게임매니저에 추가하기위해 재시작시, 장착 조금더 손보기 
-        GameManager.Instance.SkillDataList.SettingOutSkill(num1);
+        // 스킬 칸 확인
+        if (GameManager.Instance.SkillDataList.CanSetSkill(_skill) == true)
+        {
+            //스킬 장착
+            if (GameManager.Instance.SkillDataList.SettingInSkill(_skill) == true)
+            {
+                _set.SetActive(false);
+                _out.SetActive(true);
+            }
+        }
+        else
+        {
+            GameManager.Instance.SkillDataList.SettingOutSkill(_skill);
+            _set.SetActive(true);
+            _out.SetActive(false);
+        }
     }
 }

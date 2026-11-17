@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     public bool CanLearnSkills(SkillData skilllist)
     {
         bool IsSkillSucess;
-        if (_skillDataList.HasSkillCheck(skilllist) == true)// 중복 확인
+        if (_skillDataList.HasNotSkillCheck(skilllist) == true)// 중복 확인
         {
             Debug.Log("미습득 스킬");
             if (_growthItem >= skilllist.LearnCost)//재화 확인

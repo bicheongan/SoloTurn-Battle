@@ -15,7 +15,7 @@ public class SkillDataList
     public IReadOnlyList<SkillData> SkillList => _skillList;
     public IReadOnlyList<SkillData> EquipSkill => _equipSkill;
 
-    public bool HasSkillCheck(SkillData skilllsit)// 스킬 중복 검사 메서드
+    public bool HasNotSkillCheck(SkillData skilllsit)// 스킬 중복 검사 메서드
     {
         bool result;
         if (!_skillList.Contains(skilllsit))
@@ -32,36 +32,52 @@ public class SkillDataList
     {
         _skillList.Add(skill);
     }
-    public void SettingInSkill(int num, int skillnum)
+    public bool SettingInSkill(SkillData skill)
     {
-        if (num < 0 || _equipSkill.Length <= num)
+        if (HasNotSkillCheck(skill) == true) // 배웠는지 검사
         {
-            Debug.Log("장착칸 범위를 넘었습니다.");
-            return;
+            Debug.Log("배우지 못한 스킬");
+            return false;
         }
-        if(skillnum <0 || _skillList.Count <= skillnum)
+        if (CanSetSkill(skill) == false) return false; // 장착되어 있는지 검사
+        for(int i = 0; i< _equipSkill.Length; i++)
         {
-            Debug.Log("습득 스킬 목록 범위 초과");
-            return;
-        }
-        for(int i = 0; i < _equipSkill.Length; i++)
-        {
-            if (_equipSkill[i] == _skillList[skillnum])
+            if(_equipSkill[i] == null)
             {
-                Debug.Log("중복 장착불가");
-                return;
+                _equipSkill[i] = skill;
+                return true;
             }
         }
-        _equipSkill[num] = _skillList[skillnum];
-    }
-    public void SettingOutSkill(int num)
-    {
-        if (num < 0 || _equipSkill.Length <= num)
-        {
-            Debug.Log("범위를 넘었습니다.");
-            return;
-        }
-        _equipSkill[num] = null;
 
+        Debug.Log("칸 가득 참");
+        return false;
+    }
+    public void SettingOutSkill(SkillData skill)
+    {
+        for (int i = 0; i < _equipSkill.Length; i++)
+        {
+            if (_equipSkill[i] == skill)
+            {
+                _equipSkill[i] = null;
+                Debug.Log("스킬 빼기 성공");
+            }
+            else
+            {
+                Debug.Log("칸에 존재하지 않는 스킬이다");
+            }
+        }
+
+    }
+
+    public bool CanSetSkill(SkillData skill)
+    {
+        for (int i = 0; i < _equipSkill.Length; i++)
+        {
+            if (_equipSkill[i] == skill)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
