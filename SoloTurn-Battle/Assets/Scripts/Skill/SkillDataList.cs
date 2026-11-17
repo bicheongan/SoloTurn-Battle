@@ -14,10 +14,10 @@ public class SkillDataList
     public IReadOnlyList<SkillData> SkillList => _skillList;
     public IReadOnlyList<SkillData> EquipSkill => _equipSkill;
 
-    public bool LearnSkills(SkillData skllname)// 스킬 중복 검사 메서드
+    public bool HasSkillCheck(SkillData skilllsit)// 스킬 중복 검사 메서드
     {
         bool result;
-        if (!_skillList.Contains(skllname))
+        if (!_skillList.Contains(skilllsit))
         {
                 result = true;
         }
@@ -30,5 +30,9 @@ public class SkillDataList
     public void AddSkill(SkillData skill) 
     {
         _skillList.Add(skill);
+    }
+    public void SettingSkill(int num, int skillnum)
+    {
+        _equipSkill[num] = _skillList[skillnum];
     }
 }

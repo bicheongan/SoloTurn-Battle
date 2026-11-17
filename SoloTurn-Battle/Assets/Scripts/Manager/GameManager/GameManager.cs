@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance {  get; private set; }
     [SerializeField]private PlayerStates _playerStates;
     [SerializeField] private SkillDataList _skillDataList;
-    [SerializeField] private SkillData _skillData;
     [SerializeField] private int _itemMax = 999;
     [SerializeField] private int _growthItem;
     [SerializeField] private int _useItem = 10;
@@ -16,7 +15,7 @@ public class GameManager : MonoBehaviour
     private int _remainDay;
     public PlayerStates PlayerStates => _playerStates;
     public SkillDataList SkillDataList => _skillDataList;
-    public SkillData skillData => _skillData;
+
     public int ItemMax => _itemMax;
     public int GrowthItem => _growthItem;
     public int TotalDate => _totalDate;
@@ -58,21 +57,21 @@ public class GameManager : MonoBehaviour
         }
         return IsSucess;
     }
-    public bool SkillSucess(SkillData skllname)
+    public bool CanLearnSkills(SkillData skilllist)
     {
         bool IsSkillSucess;
-        if (_skillDataList.LearnSkills(skllname) == true)// 중복 확인
+        if (_skillDataList.HasSkillCheck(skilllist) == true)// 중복 확인
         {
             Debug.Log("미습득 스킬");
-            if (_growthItem >= skllname.LearnCost)//재화 확인
+            if (_growthItem >= skilllist.LearnCost)//재화 확인
             {
-                _growthItem -= skllname.LearnCost;
-                _skillDataList.AddSkill(skllname);
+                _growthItem -= skilllist.LearnCost;
+                _skillDataList.AddSkill(skilllist);
                 IsSkillSucess = true;
             }
             else
             {
-                Debug.Log("재화부족 입니다.");
+                Debug.Log("재화가 부족합니다.");
                 IsSkillSucess = false;
             }
         }
