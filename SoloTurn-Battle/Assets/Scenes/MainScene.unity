@@ -2466,6 +2466,12 @@ MonoBehaviour:
     _istrainingAttack: 0
     _istrainingDefend: 0
     _istrainingSpeed: 0
+  _skillDataList:
+    _skillList:
+    - {fileID: 11400000, guid: ae3ec55af2035f24d9354e77381209ab, type: 2}
+    - {fileID: 11400000, guid: 373f3a5fbf50eed478abdd68be330dbd, type: 2}
+    _equipSkill: []
+  _skillData: {fileID: 0}
   _itemMax: 999
   _growthItem: 999
   _useItem: 10
