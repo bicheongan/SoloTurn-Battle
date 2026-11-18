@@ -1020,11 +1020,11 @@ Transform:
   m_GameObject: {fileID: 299406398}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -32.886272, y: -11.027007, z: 0}
-  m_LocalScale: {x: 0.083333336, y: 0.14285713, z: 1}
+  m_LocalPosition: {x: -394.63525, y: -77.18906, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1241112464}
+  m_Father: {fileID: 877261403}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &318380663 stripped
 MonoBehaviour:
@@ -1734,7 +1734,7 @@ GameObject:
   - component: {fileID: 589884355}
   - component: {fileID: 589884354}
   m_Layer: 0
-  m_Name: SkillSetting
+  m_Name: Skill2Setting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2156,7 +2156,6 @@ RectTransform:
   - {fileID: 895270624}
   - {fileID: 286733736}
   - {fileID: 2044496079}
-  - {fileID: 1141976560}
   m_Father: {fileID: 877261403}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3040,7 +3039,9 @@ RectTransform:
   - {fileID: 1991245375}
   - {fileID: 943998277}
   - {fileID: 1241112464}
+  - {fileID: 299406400}
   - {fileID: 722131463}
+  - {fileID: 1141976560}
   - {fileID: 1930124169}
   - {fileID: 1094546856}
   m_Father: {fileID: 940340313}
@@ -3586,7 +3587,7 @@ GameObject:
   - component: {fileID: 946806458}
   - component: {fileID: 946806457}
   m_Layer: 0
-  m_Name: SkillSetting
+  m_Name: Skill1Setting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4582,11 +4583,11 @@ Transform:
   m_GameObject: {fileID: 1141976559}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -32.886272, y: -11.027007, z: 0}
-  m_LocalScale: {x: 0.083333336, y: 0.14285713, z: 1}
+  m_LocalPosition: {x: -394.63525, y: -77.18906, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 722131463}
+  m_Father: {fileID: 877261403}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1141976561
 MonoBehaviour:
@@ -4604,8 +4605,8 @@ MonoBehaviour:
   _button: {fileID: 286733733}
   _ui: {fileID: 1514918053}
   _equipButton: {fileID: 234352471}
-  _skillUI: {fileID: 0}
-  _getPanel: {fileID: 722131462}
+  _skillUI: {fileID: 722131462}
+  _getPanel: {fileID: 1930124168}
   _failLearnUI: {fileID: 1094546855}
 --- !u!1 &1198021566
 GameObject:
@@ -5228,7 +5229,6 @@ RectTransform:
   - {fileID: 792214505}
   - {fileID: 629721240}
   - {fileID: 1771169495}
-  - {fileID: 299406400}
   m_Father: {fileID: 877261403}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

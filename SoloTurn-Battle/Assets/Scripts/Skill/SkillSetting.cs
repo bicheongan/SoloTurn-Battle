@@ -7,7 +7,22 @@ public class SkillSetting : MonoBehaviour
     [SerializeField]private SkillData _skill;
     [SerializeField]private List<SkillSlotUI> _skillSlots;
     [SerializeField] private GameObject _set; 
-    [SerializeField] private GameObject _out; 
+    [SerializeField] private GameObject _out;
+
+    private void OnEnable()
+    {
+        if (GameManager.Instance.SkillDataList.CanSetSkill(_skill) == true)
+        {
+            _set.SetActive(true);
+            _out.SetActive(false);
+        }
+        else
+        {
+            _set.SetActive(false);
+            _out.SetActive(true);
+        }
+        UIIconCheck();
+    }
 
     public void SkillSetOut()
     {
