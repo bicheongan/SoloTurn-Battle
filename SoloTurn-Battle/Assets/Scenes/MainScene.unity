@@ -2286,7 +2286,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 742705176}
         m_TargetAssemblyTypeName: GameClearPanel, Assembly-CSharp
-        m_MethodName: ResetExit
+        m_MethodName: ResetGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5642,7 +5642,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 742705176}
         m_TargetAssemblyTypeName: GameClearPanel, Assembly-CSharp
-        m_MethodName: ResetGame
+        m_MethodName: ResetExit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -20,7 +20,7 @@ public class hpmpBar : MonoBehaviour
     }
 
 
-    private void UpdateHpMpBar(float maxhp, float currenthp, int maxmp, int currentmp)
+    public void UpdateHpMpBar(float maxhp, float currenthp, int maxmp, int currentmp)
     {
         _hPText.text = $"{maxhp}/{currenthp}";
         _hPBar.fillAmount = currenthp / maxhp;

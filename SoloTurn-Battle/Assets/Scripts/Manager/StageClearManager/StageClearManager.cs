@@ -32,11 +32,14 @@ public class StageClearManager : MonoBehaviour
         }
         if (GameManager.Instance.ClearCount == 2)
         {
+            _button[0].interactable = false;
             _button[1].interactable = false;
             _button[2].interactable = true;
         }
         if (GameManager.Instance.ClearCount == 3)
         {
+            _button[0].interactable = false;
+            _button[1].interactable = false;
             _button[2].interactable = false;
             _button[3].interactable = true;
         }

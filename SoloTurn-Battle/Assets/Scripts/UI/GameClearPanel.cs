@@ -10,7 +10,7 @@ public class GameClearPanel : MonoBehaviour
     }
     private void Gameclear()
     {
-        if(GameManager.Instance.ClearCount == 3)
+        if(GameManager.Instance.ClearCount == 4)
         {
             _GameClear.SetActive(true);
         }

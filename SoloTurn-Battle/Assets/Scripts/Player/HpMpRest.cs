@@ -1,12 +1,19 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HpMpRest : MonoBehaviour
 {
+    [SerializeField] private hpmpBar _hpmpBar;
     public void Recovery()
     {
         GameManager.Instance.PlayerStates.CurrentHp = GameManager.Instance.PlayerStates.MaxHp;
         GameManager.Instance.PlayerStates.CurrentMp = GameManager.Instance.PlayerStates.MaxMp;
+        _hpmpBar.UpdateHpMpBar(
+            GameManager.Instance.PlayerStates.MaxHp,
+            GameManager.Instance.PlayerStates.CurrentHp,
+            GameManager.Instance.PlayerStates.MaxMp,
+            GameManager.Instance.PlayerStates.CurrentMp);
     }
     public void StageRecovery()
     {
