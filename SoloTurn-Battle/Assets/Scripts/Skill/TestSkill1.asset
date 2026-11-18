@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: TestSkill1
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
   _skillName: 
-  _damage: 0
-  _mpCost: 0
+  _damage: 10
+  _mpCost: 10
   _learnCost: 20
   _canAllTarget: 0
-  _skillIcon: {fileID: 0}
+  _skillIcon: {fileID: 21300000, guid: cc5449e24c8e8b14b83fd9d51a7288b7, type: 3}
   _skillEffect: {fileID: 0}
   _animationName: 

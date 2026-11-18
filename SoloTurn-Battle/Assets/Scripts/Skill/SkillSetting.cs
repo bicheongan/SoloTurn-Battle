@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using System.Collections.Generic;
 
 public class SkillSetting : MonoBehaviour
 {
     [SerializeField]private SkillData _skill;
+    [SerializeField]private List<SkillSlotUI> _skillSlots;
     [SerializeField] private GameObject _set; 
     [SerializeField] private GameObject _out; 
 
@@ -18,6 +19,7 @@ public class SkillSetting : MonoBehaviour
             {
                 _set.SetActive(false);
                 _out.SetActive(true);
+                UIIconCheck();
             }
         }
         else
@@ -25,6 +27,14 @@ public class SkillSetting : MonoBehaviour
             GameManager.Instance.SkillDataList.SettingOutSkill(_skill);
             _set.SetActive(true);
             _out.SetActive(false);
+            UIIconCheck();
+        }
+    }
+    private void UIIconCheck()
+    {
+        foreach (var slot in _skillSlots)
+        {
+            slot.UpdateIcon();
         }
     }
 }
