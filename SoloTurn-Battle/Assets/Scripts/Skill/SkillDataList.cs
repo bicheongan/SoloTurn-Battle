@@ -80,4 +80,15 @@ public class SkillDataList
         }
         return true;
     }
+    public void SkillReset()
+    {
+        for (int i = 0; i < _equipSkill.Length; i++)
+        {
+            _equipSkill[i] = null;
+        }
+        for(int i =0; i<_skillList.Count; i++)
+        {
+            _skillList[i] = null;
+        }
+    }
 }

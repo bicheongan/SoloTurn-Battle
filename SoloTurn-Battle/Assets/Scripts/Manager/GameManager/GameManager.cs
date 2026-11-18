@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
         _growthItem = 0;
         _playerStates.ResetStates();
         _playerStates.Init();
+        _skillDataList.SkillReset();
         _clearCount = 0;
         SceneManager.LoadScene(name);
     }
