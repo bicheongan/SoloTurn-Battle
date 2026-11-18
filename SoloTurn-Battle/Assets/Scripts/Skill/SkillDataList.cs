@@ -86,9 +86,6 @@ public class SkillDataList
         {
             _equipSkill[i] = null;
         }
-        for(int i =0; i<_skillList.Count; i++)
-        {
-            _skillList[i] = null;
-        }
+        _skillList.Clear();
     }
 }
