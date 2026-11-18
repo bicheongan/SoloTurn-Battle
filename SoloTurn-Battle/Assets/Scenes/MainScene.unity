@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd59d4512b0a11a4da5de0994a4732de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LearnSkillSetting
-  _skill: {fileID: 11400000, guid: ae3ec55af2035f24d9354e77381209ab, type: 2}
+  _skill: {fileID: 11400000, guid: 373f3a5fbf50eed478abdd68be330dbd, type: 2}
   _button: {fileID: 629721241}
   _ui: {fileID: 1514918053}
 --- !u!4 &299406400
@@ -2873,7 +2873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c782fb636b352d499a4d633f43ab0e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillSetting
-  _skill: {fileID: 11400000, guid: ae3ec55af2035f24d9354e77381209ab, type: 2}
+  _skill: {fileID: 11400000, guid: 373f3a5fbf50eed478abdd68be330dbd, type: 2}
   _skillSlots:
   - {fileID: 1991245377}
   - {fileID: 1991245376}

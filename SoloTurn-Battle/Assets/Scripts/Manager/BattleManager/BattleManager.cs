@@ -77,7 +77,47 @@ public class BattleManager : MonoBehaviour
 
         _turnManager.ChangeTurn(TurnEnum.EnemyTurn);
     }
-    
+    public void PlayerSkillAttack(int slotnum)
+    {
+        SkillData skillData = GameManager.Instance.SkillDataList.EquipSkill[slotnum];// 슬롯정보 받기
+        if (GameManager.Instance.PlayerStates.CurrentHp <= 0) return;
+        if (skillData == null) return;
+        if (GameManager.Instance.PlayerStates.CurrentMp < skillData.MPCost) return;
+        if (_turnManager.CurrentTurn != TurnEnum.PlayerTurn) return;
+        if (enemies.Count == 0) return;
+
+        Enemy enemy = _targetEnemy.Target;
+        if (skillData.CanAllTarget == true)
+        {
+            for(int i = 0;i < enemies.Count; i++)
+            {
+                enemies[i].TakeDamage(GameManager.Instance.PlayerStates.Attack * skillData.Damage);
+            }
+        }
+        else
+        {
+            if (_targetEnemy.Target == null) return;
+            if (enemy.IsDead) return;
+            enemy.TakeDamage(GameManager.Instance.PlayerStates.Attack * skillData.Damage);
+            Debug.Log("플레이어 단일 스킬 공격");
+        }
+        GameManager.Instance.PlayerStates.CurrentMp -= skillData.MPCost;
+        enemycount = 0;
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            Enemy en = enemies[i];
+            if (en.IsDead == false)
+            {
+                enemycount++;
+            }
+            Debug.Log(enemycount);
+        }
+
+        AllDead();
+
+        _turnManager.ChangeTurn(TurnEnum.EnemyTurn);
+    }
+
     // 몬스터턴에 몬스터들 공격
     public void EnemyAttack()
     {

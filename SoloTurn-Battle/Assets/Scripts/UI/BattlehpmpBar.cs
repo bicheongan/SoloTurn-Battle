@@ -25,6 +25,6 @@ public class BattlehpmpBar : MonoBehaviour
         _hPText.text = $"{maxhp}/{currenthp}";
         _hPBar.fillAmount = currenthp / maxhp;
         _mPText.text = $"{maxmp}/{currentmp}";
-        _mPBar.fillAmount = currentmp / maxmp;
+        _mPBar.fillAmount = (float)currentmp / maxmp;
     }
 }

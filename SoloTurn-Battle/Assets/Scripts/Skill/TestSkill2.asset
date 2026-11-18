@@ -16,7 +16,7 @@ MonoBehaviour:
   _damage: 10
   _mpCost: 10
   _learnCost: 10
-  _canAllTarget: 0
+  _canAllTarget: 1
   _skillIcon: {fileID: 21300000, guid: cc5449e24c8e8b14b83fd9d51a7288b7, type: 3}
   _skillEffect: {fileID: 0}
   _animationName: 
