@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Enemy : MonoBehaviour
 {
@@ -15,6 +17,10 @@ public class Enemy : MonoBehaviour
         _data = data;
         _currentHp = _data.HP;
 
+    }
+    public void LookPlayer(Transform player)
+    {
+        transform.LookAt(player);
     }
     public void TakeDamage(float damage)
     {

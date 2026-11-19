@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private Transform _playerPoint;
     [SerializeField] private GameObject _player;
     [SerializeField] private TurnManager _turnManager;
+    [SerializeField] private GameObject _targetNull;
     private EnemySelect _targetEnemy;
     private bool allDead;
     public bool AllIsDead => allDead;
@@ -46,6 +48,7 @@ public class BattleManager : MonoBehaviour
             {
                 enemies.Add(enemy);
                 enemy.Initialize(data[i]);
+                enemy.LookPlayer(_playerPoint);
             }
             else { Debug.Log("오류남 확인해봐"); }
         }
@@ -56,8 +59,13 @@ public class BattleManager : MonoBehaviour
         if (GameManager.Instance.PlayerStates.CurrentHp <= 0) return;
         if (_turnManager.CurrentTurn != TurnEnum.PlayerTurn) return;
         if (enemies.Count == 0)return;
-        if (_targetEnemy.Target == null) return;
         Enemy enemy = _targetEnemy.Target;
+        if (_targetEnemy.Target == null)
+        {
+            _targetNull.SetActive(true);
+            StartCoroutine(targetPanel());
+            return;
+        }
         if (enemy.IsDead) return;
         enemy.TakeDamage(GameManager.Instance.PlayerStates.Attack);
         Debug.Log("플레이어 기본 공격");
@@ -89,19 +97,34 @@ public class BattleManager : MonoBehaviour
         Enemy enemy = _targetEnemy.Target;
         if (skillData.CanAllTarget == true)
         {
-            for(int i = 0;i < enemies.Count; i++)
-            {
-                enemies[i].TakeDamage(GameManager.Instance.PlayerStates.Attack * skillData.Damage);
-            }
+            StartCoroutine(AllSkillImpact(slotnum));
+            Debug.Log("플레이어 전체공격 스킬");
         }
         else
         {
-            if (_targetEnemy.Target == null) return;
+            if (_targetEnemy.Target == null)
+            {
+                _targetNull.SetActive(true);
+                StartCoroutine(targetPanel());
+                return;
+            }
             if (enemy.IsDead) return;
-            enemy.TakeDamage(GameManager.Instance.PlayerStates.Attack * skillData.Damage);
-            Debug.Log("플레이어 단일 스킬 공격");
+            StartCoroutine(SkillImpact(slotnum, enemy));
+            Debug.Log("플레이어 단일공격 스킬");
         }
         GameManager.Instance.PlayerStates.CurrentMp -= skillData.MPCost;
+
+    }
+    private IEnumerator SkillImpact(int slot, Enemy enemy)
+    {
+        Transform target = enemy.transform;
+        SkillData skillData = GameManager.Instance.SkillDataList.EquipSkill[slot];
+        GameObject SkillImpact = Instantiate(skillData.SkillEffect, target.position, Quaternion.identity);
+        ParticleSystem Impact = SkillImpact.GetComponent<ParticleSystem>();
+        SkillImpact.transform.localScale += new Vector3(1, 1, 1);
+        yield return new WaitWhile(Impact.IsAlive);
+        enemy.TakeDamage(GameManager.Instance.PlayerStates.Attack * skillData.Damage);
+        Destroy(SkillImpact);
         enemycount = 0;
         for (int i = 0; i < enemies.Count; i++)
         {
@@ -112,7 +135,35 @@ public class BattleManager : MonoBehaviour
             }
             Debug.Log(enemycount);
         }
+        AllDead();
 
+        _turnManager.ChangeTurn(TurnEnum.EnemyTurn);
+    }
+    private IEnumerator AllSkillImpact(int slot)
+    {
+        Transform target = _spawnPoints[0];
+        SkillData skillData = GameManager.Instance.SkillDataList.EquipSkill[slot];
+        GameObject SkillImpact;
+        SkillImpact = Instantiate(skillData.SkillEffect, target.position, Quaternion.identity);
+        ParticleSystem Impact = SkillImpact.GetComponent<ParticleSystem>();
+        SkillImpact.transform.localScale += new Vector3(2.5f, 2.5f, 2.5f);
+
+        yield return new WaitWhile(Impact.IsAlive);
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            enemies[i].TakeDamage(GameManager.Instance.PlayerStates.Attack * skillData.Damage);
+        }
+        Destroy(SkillImpact);
+        enemycount = 0;
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            Enemy en = enemies[i];
+            if (en.IsDead == false)
+            {
+                enemycount++;
+            }
+            Debug.Log(enemycount);
+        }
         AllDead();
 
         _turnManager.ChangeTurn(TurnEnum.EnemyTurn);
@@ -139,6 +190,11 @@ public class BattleManager : MonoBehaviour
             }
         }
 
+    }
+    private IEnumerator targetPanel()
+    {
+        yield return new WaitForSeconds(1);
+        _targetNull.SetActive(false);
     }
     public void AllDead()
     {

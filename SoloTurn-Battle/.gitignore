@@ -110,3 +110,6 @@ InitTestScene*.unity*
 
 /Assets/Imports/
 /Assets/Imports.meta
+
+/.ai
+/.idea
