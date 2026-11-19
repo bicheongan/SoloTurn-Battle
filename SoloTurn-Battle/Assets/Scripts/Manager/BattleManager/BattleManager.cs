@@ -16,6 +16,7 @@ public class BattleManager : MonoBehaviour
     private List<EnemyData> data;
     private List<Enemy> enemies = new List<Enemy>();
     private int enemycount;
+    private Animator _playerAnimator;
 
     private void Awake()
     {
@@ -39,6 +40,7 @@ public class BattleManager : MonoBehaviour
             return;
         }
         GameObject playerObject = Instantiate(_player, _playerPoint.position, _playerPoint.rotation);
+        _playerAnimator = playerObject.GetComponent<Animator>();
         for (int i = 0; i < data.Count; i++)
         {
             GameObject enemyObject = Instantiate(data[i].Prefab, _spawnPoints[i].position, _spawnPoints[i].rotation);
