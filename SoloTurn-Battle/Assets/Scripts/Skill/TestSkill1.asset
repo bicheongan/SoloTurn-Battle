@@ -17,7 +17,7 @@ MonoBehaviour:
   _mpCost: 10
   _learnCost: 20
   _canAllTarget: 0
-  _skillIcon: {fileID: 21300000, guid: cefb028d3346c7a4c98cb8e3b9ab862c, type: 3}
-  _skillEffect: {fileID: 1759752313034738, guid: bde090df84b36794d85627fb397cae50, type: 3}
-  _skillEffect2: {fileID: 0}
-  _animationName: 
+  _skillIcon: {fileID: 21300000, guid: 076f50767c3e4624484275a041c9eb27, type: 3}
+  _skillEffect: {fileID: 1714615221845288839, guid: 1cd9e7b37d2a21b4aad506c8b5a8ee7a, type: 3}
+  _skillEffect2: {fileID: 1578979681979112, guid: a4f63907440efa84492e58543e302e12, type: 3}
+  _animationName: skill1

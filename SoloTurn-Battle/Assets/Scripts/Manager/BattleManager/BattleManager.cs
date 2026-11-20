@@ -15,6 +15,9 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Button> _button;
     [SerializeField] private CinemachineCamera _playerCloseUpCamera;
     [SerializeField] private CinemachineCamera _allEnemyUpCamera;
+    [SerializeField] private CinemachineCamera _EnemyCloseUpCamera;
+    [SerializeField]private GameObject _attackImpact;
+    [SerializeField] private String _normalAnim;
     private EnemySelect _targetEnemy;
     private bool allDead;
     public bool AllIsDead => allDead;
@@ -77,23 +80,8 @@ public class BattleManager : MonoBehaviour
             return;
         }
         if (enemy.IsDead) return;
-        enemy.TakeDamage(GameManager.Instance.PlayerStates.Attack);
+        StartCoroutine(NormalImpact(enemy));
         Debug.Log("플레이어 기본 공격");
-
-        enemycount = 0;
-        for (int i = 0; i < enemies.Count; i++)
-        {
-            Enemy en=enemies[i];
-            if (en.IsDead == false)
-            {
-                enemycount++;
-            }
-            Debug.Log(enemycount);
-        }
-        
-        AllDead();
-
-        _turnManager.ChangeTurn(TurnEnum.EnemyTurn);
     }
     public void PlayerSkillAttack(int slotnum)
     {
@@ -125,20 +113,71 @@ public class BattleManager : MonoBehaviour
         GameManager.Instance.PlayerStates.CurrentMp -= skillData.MPCost;
 
     }
+    private IEnumerator NormalImpact(Enemy enemy)
+    {
+        {
+            Transform target = enemy.transform;
+            FalseButton();
+            _playerLook.transform.LookAt(target);
+            _playerAnimator.Play(_normalAnim);
+            yield return new WaitForSeconds(0.47f);
+            GameObject SkillImpact = Instantiate(_attackImpact, target.position, Quaternion.identity);
+            ParticleSystem Impact = SkillImpact.GetComponent<ParticleSystem>();
+            SkillImpact.transform.localScale += new Vector3(1, 1, 1);
+            yield return new WaitWhile(Impact.IsAlive);
+            enemy.TakeDamage(GameManager.Instance.PlayerStates.Attack);
+            Destroy(SkillImpact);
+            _playerLook.rotation = _playerTransform;
+            TrueButton();
+            enemycount = 0;
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                Enemy en = enemies[i];
+                if (en.IsDead == false)
+                {
+                    enemycount++;
+                }
+                Debug.Log(enemycount);
+            }
+            AllDead();
+
+            _turnManager.ChangeTurn(TurnEnum.EnemyTurn);
+        }
+    }
     private IEnumerator SkillImpact(int slot, Enemy enemy)
     {
         Transform target = enemy.transform;
         SkillData skillData = GameManager.Instance.SkillDataList.EquipSkill[slot];
         FalseButton();
-        _playerLook.transform.LookAt(target);
+
+        _playerLook.transform.LookAt(target);// 스킬 사용시 지정 몬스터를 바라본다.
+
+        // 스킬데이터에 저장된 애니메이션과 이펙트를 재생
+        _playerAnimator.Play(GameManager.Instance.SkillDataList.EquipSkill[slot].AnimationName);
+        GameObject SkillImpact2 = Instantiate(skillData.SkillEffect2, _playerPoint.position, Quaternion.identity);
+        ParticleSystem Impact2 = SkillImpact2.GetComponent<ParticleSystem>();
+        yield return new WaitWhile(Impact2.IsAlive);
+
+        // 지정 몬스터로 카메라 전환
+        _EnemyCloseUpCamera.Target.TrackingTarget = target;
+        _EnemyCloseUpCamera.Priority = 80;
+
+        // 몬스터 위치에 이펙트 생성
         GameObject SkillImpact = Instantiate(skillData.SkillEffect, target.position, Quaternion.identity);
         ParticleSystem Impact = SkillImpact.GetComponent<ParticleSystem>();
         SkillImpact.transform.localScale += new Vector3(1, 1, 1);
         yield return new WaitWhile(Impact.IsAlive);
+
+        // 이펙트 재생 후 데미지 전당
         enemy.TakeDamage(GameManager.Instance.PlayerStates.Attack * skillData.Damage);
         Destroy(SkillImpact);
+
+        // 저장된 플레이어가 바라보는 방향 원위치 및 카메라 전환
         _playerLook.rotation = _playerTransform;
+        _EnemyCloseUpCamera.Priority = 0;
         TrueButton();
+
+        // 몬스터 전원 사망인지 체크
         enemycount = 0;
         for (int i = 0; i < enemies.Count; i++)
         {
@@ -151,6 +190,7 @@ public class BattleManager : MonoBehaviour
         }
         AllDead();
 
+        // 턴전환
         _turnManager.ChangeTurn(TurnEnum.EnemyTurn);
     }
     private IEnumerator AllSkillImpact(int slot)

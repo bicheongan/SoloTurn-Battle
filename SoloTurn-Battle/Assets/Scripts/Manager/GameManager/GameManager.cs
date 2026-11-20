@@ -12,9 +12,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _useItem = 10;
     [SerializeField] private int _totalDate = 100;
     [SerializeField]private int _clearCount;
+    private SkillData _skillData;
     private int _remainDay;
     public PlayerStates PlayerStates => _playerStates;
     public SkillDataList SkillDataList => _skillDataList;
+    public SkillData SkillData => _skillData;
 
     public int ItemMax => _itemMax;
     public int GrowthItem => _growthItem;
