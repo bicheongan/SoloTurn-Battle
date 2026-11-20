@@ -19,4 +19,5 @@ MonoBehaviour:
   _canAllTarget: 1
   _skillIcon: {fileID: 21300000, guid: 7f59c7699966d0540b09eea8999a32d7, type: 3}
   _skillEffect: {fileID: 1658525510040468, guid: e3e4de69343c17c49b77c92ff3ed4b6b, type: 3}
-  _animationName: 
+  _skillEffect2: {fileID: 1609107109629186, guid: d46c22bab60e1714eaa1829f89e1a143, type: 3}
+  _animationName: Cast

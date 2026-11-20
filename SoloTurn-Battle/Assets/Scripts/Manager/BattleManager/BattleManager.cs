@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Unity.Cinemachine;
 
 public class BattleManager : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private TurnManager _turnManager;
     [SerializeField] private GameObject _targetNull;
+    [SerializeField] private List<Button> _button;
+    [SerializeField] private CinemachineCamera _playerCloseUpCamera;
+    [SerializeField] private CinemachineCamera _allEnemyUpCamera;
     private EnemySelect _targetEnemy;
     private bool allDead;
     public bool AllIsDead => allDead;
@@ -17,12 +22,13 @@ public class BattleManager : MonoBehaviour
     private List<Enemy> enemies = new List<Enemy>();
     private int enemycount;
     private Animator _playerAnimator;
-
+    private Quaternion _playerTransform;
+    private Transform _playerLook;
     private void Awake()
     {
         data = BattleData.data;
         Count();
-        EnemySpawn();
+        PlayerEnemySpawn();
         Debug.Log("적 데이터 호출");
         _targetEnemy = GetComponent<EnemySelect>();
     }
@@ -31,7 +37,7 @@ public class BattleManager : MonoBehaviour
         Debug.Log($"EnemyData{data.Count}");
         Debug.Log($"Transform{_spawnPoints.Count}");
     }
-    private void EnemySpawn()
+    private void PlayerEnemySpawn()
     {
    
         if (data.Count > _spawnPoints.Count)
@@ -41,6 +47,8 @@ public class BattleManager : MonoBehaviour
         }
         GameObject playerObject = Instantiate(_player, _playerPoint.position, _playerPoint.rotation);
         _playerAnimator = playerObject.GetComponent<Animator>();
+        _playerLook = playerObject.transform;
+        _playerTransform = playerObject.transform.rotation;
         for (int i = 0; i < data.Count; i++)
         {
             GameObject enemyObject = Instantiate(data[i].Prefab, _spawnPoints[i].position, _spawnPoints[i].rotation);
@@ -121,12 +129,16 @@ public class BattleManager : MonoBehaviour
     {
         Transform target = enemy.transform;
         SkillData skillData = GameManager.Instance.SkillDataList.EquipSkill[slot];
+        FalseButton();
+        _playerLook.transform.LookAt(target);
         GameObject SkillImpact = Instantiate(skillData.SkillEffect, target.position, Quaternion.identity);
         ParticleSystem Impact = SkillImpact.GetComponent<ParticleSystem>();
         SkillImpact.transform.localScale += new Vector3(1, 1, 1);
         yield return new WaitWhile(Impact.IsAlive);
         enemy.TakeDamage(GameManager.Instance.PlayerStates.Attack * skillData.Damage);
         Destroy(SkillImpact);
+        _playerLook.rotation = _playerTransform;
+        TrueButton();
         enemycount = 0;
         for (int i = 0; i < enemies.Count; i++)
         {
@@ -145,10 +157,18 @@ public class BattleManager : MonoBehaviour
     {
         Transform target = _spawnPoints[0];
         SkillData skillData = GameManager.Instance.SkillDataList.EquipSkill[slot];
+        FalseButton();
         GameObject SkillImpact;
+        GameObject SkillImpact2;
+        _playerCloseUpCamera.Priority = 70;
+        _playerAnimator.Play(GameManager.Instance.SkillDataList.EquipSkill[slot].AnimationName);
+        SkillImpact2 = Instantiate(skillData.SkillEffect2, _playerPoint.position, Quaternion.identity);
+        ParticleSystem Impact2 = SkillImpact2.GetComponent<ParticleSystem>();
+        yield return new WaitWhile(Impact2.IsAlive);
+        _allEnemyUpCamera.Priority = 80;
         SkillImpact = Instantiate(skillData.SkillEffect, target.position, Quaternion.identity);
         ParticleSystem Impact = SkillImpact.GetComponent<ParticleSystem>();
-        SkillImpact.transform.localScale += new Vector3(2.5f, 2.5f, 2.5f);
+        SkillImpact.transform.localScale += new Vector3(3.5f, 3.5f, 3.5f);
 
         yield return new WaitWhile(Impact.IsAlive);
         for (int i = 0; i < enemies.Count; i++)
@@ -156,6 +176,10 @@ public class BattleManager : MonoBehaviour
             enemies[i].TakeDamage(GameManager.Instance.PlayerStates.Attack * skillData.Damage);
         }
         Destroy(SkillImpact);
+        Destroy(SkillImpact2);
+        TrueButton();
+        _playerCloseUpCamera.Priority = 0;
+        _allEnemyUpCamera.Priority = 0;
         enemycount = 0;
         for (int i = 0; i < enemies.Count; i++)
         {
@@ -207,6 +231,20 @@ public class BattleManager : MonoBehaviour
             _turnManager.ChangeTurn(TurnEnum.BattleEnd);
             _turnManager.BattleEnd();
             return;
+        }
+    }
+    private void FalseButton()
+    {
+        for (int i = 0; i < _button.Count; i++)
+        {
+            _button[i].interactable = false;
+        }
+    }
+    private void TrueButton()
+    {
+        for (int i = 0; i < _button.Count; i++)
+        {
+            _button[i].interactable = true;
         }
     }
 }

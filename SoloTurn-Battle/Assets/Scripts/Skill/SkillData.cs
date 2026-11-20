@@ -19,6 +19,7 @@ public class SkillData : ScriptableObject
     [Header("애니메이션 및 효과")]
     [SerializeField] private Sprite _skillIcon;
     [SerializeField] private GameObject _skillEffect;
+    [SerializeField] private GameObject _skillEffect2;
     [SerializeField] private string _animationName;
 
     public string SkillName => _skillName;
@@ -28,5 +29,6 @@ public class SkillData : ScriptableObject
     public int LearnCost { get { return _learnCost; } set { _learnCost = value; } }
     public Sprite SkillIcon => _skillIcon;
     public GameObject SkillEffect => _skillEffect;
+    public GameObject SkillEffect2 => _skillEffect2;
     public string AnimationName => _animationName;
 }
