@@ -236,7 +236,7 @@ public class BattleManager : MonoBehaviour
     }
 
     // 몬스터턴에 몬스터들 공격
-    public void EnemyAttack()
+    private void EnemyAttack()
     {
         if (enemies.Count == 0) return;
         for (int i = 0; i < enemies.Count; i++)
@@ -249,13 +249,39 @@ public class BattleManager : MonoBehaviour
 
             Debug.Log("총공격!!!");
             GameManager.Instance.PlayerStates.TakeDamage(enemy.Attack);
-            if (GameManager.Instance.PlayerStates.CurrentHp <= 0) 
-            {
-                _turnManager.BattleEnd();
-                return;
-            }
         }
 
+    }
+    private void EnemyTurn(TurnEnum turn)
+    {
+        if (AllIsDead) return;
+        if (turn == TurnEnum.EnemyTurn)
+        {
+
+            EnemyAttack();
+            Debug.Log("몬스터 공격");
+            if (GameManager.Instance.PlayerStates.IsDead)
+            {
+                _turnManager.ChangeTurn(TurnEnum.BattleEnd);
+                _turnManager.BattleEnd(false);
+                return;
+            }
+            if (GameManager.Instance.PlayerStates.IsDead) return;
+            _turnManager.ChangeTurn(TurnEnum.PlayerTurn);
+            Debug.Log("플레이어 턴");
+        }
+        else if (turn == TurnEnum.PlayerTurn)
+        {
+            Debug.Log("플레이어 대기");
+        }
+    }
+    private void OnEnable()
+    {
+        _turnManager.OnTurnChanged += EnemyTurn;
+    }
+    private void OnDisable()
+    {
+        _turnManager.OnTurnChanged -= EnemyTurn;
     }
     private IEnumerator targetPanel()
     {
@@ -269,7 +295,7 @@ public class BattleManager : MonoBehaviour
             allDead = true;
             Debug.Log("전멸");
             _turnManager.ChangeTurn(TurnEnum.BattleEnd);
-            _turnManager.BattleEnd();
+            _turnManager.BattleEnd(true);
             return;
         }
     }

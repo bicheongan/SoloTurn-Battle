@@ -5148,7 +5148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   _playerStates:
-    _maxHp: 400
+    _maxHp: 500
     _currentHp: 0
     _maxMp: 50
     _currentMp: 50

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class TurnManager : MonoBehaviour
 {
-    [SerializeField] private BattleManager _battleManager;
     private List<EnemyData> data;
     private PlayerStates player;
     private int _maxSpeed;
@@ -44,32 +43,12 @@ public class TurnManager : MonoBehaviour
         _currentTurn = newTurn;
 
         OnTurnChanged?.Invoke(_currentTurn);
-
-        if (_battleManager.AllIsDead) return;
-        if (_currentTurn == TurnEnum.EnemyTurn)
-        {
-
-            _battleManager.EnemyAttack();
-            Debug.Log("몬스터 공격");
-            if (GameManager.Instance.PlayerStates.IsDead)
-            {
-                ChangeTurn(TurnEnum.BattleEnd);
-                BattleEnd();
-            }
-            if (GameManager.Instance.PlayerStates.IsDead) return;
-            ChangeTurn(TurnEnum.PlayerTurn);
-            Debug.Log("플레이어 턴");
-        }
-        else if (_currentTurn == TurnEnum.PlayerTurn)
-        {
-            Debug.Log("플레이어 대기");
-        }
     }
     public event Action OnWinPanel;
     public event Action OnLosePanel;
-    public void BattleEnd()
+    public void BattleEnd(bool iswin)
     {
-        if (GameManager.Instance.PlayerStates.IsDead)
+        if (iswin == false)
         {
             Debug.Log(" 플레이어 사망");
             Debug.Log("졌당ㅠㅠ");
@@ -80,7 +59,7 @@ public class TurnManager : MonoBehaviour
             return;
 
         }
-        if (_battleManager.AllIsDead)
+        if (iswin == true)
         {
             Debug.Log("d이겼당");
 
@@ -89,7 +68,7 @@ public class TurnManager : MonoBehaviour
             return;
         }
         
-        // BattleManager에서 몬스터가 모두 죽었다고 알리면 승리 패널을 띄운다.
+        // BattleManager에서 승패를 알리면 맞는 패널을 띄운다.
     }
     public void MaxSpeed()
     {

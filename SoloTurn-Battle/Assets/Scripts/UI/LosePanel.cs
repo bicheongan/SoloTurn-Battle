@@ -14,7 +14,7 @@ public class LosePanel : MonoBehaviour
 
     private void OnLose()
     {
-        if (GameManager.Instance._stageEnum == StageEnum.Battle)
+        if (GameManager.Instance._stageEnum == StageEnum.Dungeon)
         {
             _losePanel.SetActive(true);
         }
