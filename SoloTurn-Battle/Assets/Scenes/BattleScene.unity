@@ -3152,7 +3152,7 @@ MonoBehaviour:
   - {fileID: 433382587}
   - {fileID: 1901732199}
   _playerPoint: {fileID: 93211871}
-  _player: {fileID: 435805054814511211, guid: 27295ac4cdf5e4840a0e93f0b6df139c, type: 3}
+  _player: {fileID: 1060029176277862, guid: 0021c63169f21074dae11255bb3a1ca8, type: 3}
   _turnManager: {fileID: 2089614160}
   _targetNull: {fileID: 2108500181}
   _button:
@@ -3825,7 +3825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1713358230
 Transform:
   m_ObjectHideFlags: 0
@@ -3937,7 +3937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1730511710
 Transform:
   m_ObjectHideFlags: 0
@@ -4734,7 +4734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0ac78d6d70ca04eba6a5a35ec4ecea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurnManager
-  _battleManager: {fileID: 1511748152}
 --- !u!4 &2089614161
 Transform:
   m_ObjectHideFlags: 0

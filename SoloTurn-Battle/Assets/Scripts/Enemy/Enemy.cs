@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Animations;
 
@@ -7,11 +8,17 @@ public class Enemy : MonoBehaviour
     [SerializeField]private EnemyData _data;
     [SerializeField]private float _currentHp;
 
+    private Animator _enemyAnimator;
+
     public float Hp => _currentHp;
     public float Attack => _data.Attack;
     public int Speed => _data.Speed;
     public bool IsDead;
 
+    private void Awake()
+    {
+        CacheComponents();
+    }
     public void Initialize(EnemyData data)
     {
         _data = data;
@@ -31,7 +38,20 @@ public class Enemy : MonoBehaviour
         {
             IsDead = true;
             Debug.Log("적 사망");
-            Destroy(gameObject);
+            StartCoroutine(DieMotion());
         }
+    }
+
+    private IEnumerator DieMotion()
+    {
+        _enemyAnimator.Play(_data.DieAnim);
+        yield return null; //1 프레임 대기 이전상태로 남아있어 기다림이 필요
+        float DelayTime = _enemyAnimator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(DelayTime);
+        Destroy(gameObject);
+    }
+    private void CacheComponents()
+    {
+        _enemyAnimator = GetComponent<Animator>();
     }
 }

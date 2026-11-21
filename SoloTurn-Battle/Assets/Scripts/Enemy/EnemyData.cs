@@ -15,6 +15,14 @@ public class EnemyData : ScriptableObject
     [SerializeField] private float _defend;
     [SerializeField] private int _speed;
 
+    [Header("애니메이션 및 이펙트")]
+    [SerializeField] private GameObject _hitImpact;
+    [SerializeField] private GameObject _attackImpact;
+    [SerializeField] private GameObject _attackImpact2;
+    [SerializeField] private string _attackAnimation;
+    [SerializeField] private string _hitAnimation;
+    [SerializeField] private string _dieAnimation;
+
     public string MonsterName => _monsterName;
     public GameObject Prefab => _prefab;
     public bool IsBoss => _isBoss;
@@ -24,4 +32,12 @@ public class EnemyData : ScriptableObject
     public float Attack => _attack;
     public float Defend => _defend;
     public int Speed => _speed;
+
+    public GameObject HitImpact => _hitImpact;
+    public GameObject AttackImpact => _attackImpact;
+    public GameObject AttackImpact2 => _attackImpact2;
+    public string AttackAnim => _attackAnimation;
+    public string HitAnim => _hitAnimation;
+    public string DieAnim => _dieAnimation;
+
 }
