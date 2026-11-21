@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
-using Unity.Cinemachine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class BattleManager : MonoBehaviour
 {
@@ -236,9 +237,8 @@ public class BattleManager : MonoBehaviour
     }
 
     // 몬스터턴에 몬스터들 공격
-    private void EnemyAttack()
+    private IEnumerator EnemyAttack()
     {
-        if (enemies.Count == 0) return;
         for (int i = 0; i < enemies.Count; i++)
         {
             Enemy enemy = enemies[i];
@@ -246,29 +246,29 @@ public class BattleManager : MonoBehaviour
             {
                 continue;
             }
-
-            Debug.Log("총공격!!!");
+            
+            yield return StartCoroutine(enemy.AttackMontion());
+            Debug.Log("공격!!!");
             GameManager.Instance.PlayerStates.TakeDamage(enemy.Attack);
+            if (GameManager.Instance.PlayerStates.IsDead)
+            {
+                _turnManager.ChangeTurn(TurnEnum.BattleEnd);
+                _turnManager.BattleEnd(false);
+                yield break;
+            }
         }
+        _turnManager.ChangeTurn(TurnEnum.PlayerTurn);
+        Debug.Log("플레이어 턴");
 
     }
     private void EnemyTurn(TurnEnum turn)
     {
         if (AllIsDead) return;
+        if (enemies.Count == 0) return;
         if (turn == TurnEnum.EnemyTurn)
         {
-
-            EnemyAttack();
             Debug.Log("몬스터 공격");
-            if (GameManager.Instance.PlayerStates.IsDead)
-            {
-                _turnManager.ChangeTurn(TurnEnum.BattleEnd);
-                _turnManager.BattleEnd(false);
-                return;
-            }
-            if (GameManager.Instance.PlayerStates.IsDead) return;
-            _turnManager.ChangeTurn(TurnEnum.PlayerTurn);
-            Debug.Log("플레이어 턴");
+            StartCoroutine(EnemyAttack());
         }
         else if (turn == TurnEnum.PlayerTurn)
         {
@@ -294,7 +294,6 @@ public class BattleManager : MonoBehaviour
         {
             allDead = true;
             Debug.Log("전멸");
-            _turnManager.ChangeTurn(TurnEnum.BattleEnd);
             _turnManager.BattleEnd(true);
             return;
         }

@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
         if(IsDead) return;
         damage = Mathf.Max(damage, 0f);
         _currentHp = Mathf.Max(_currentHp - damage, 0f);
+        StartCoroutine(HitMotion());
         if (_currentHp <= 0) 
         {
             IsDead = true;
@@ -49,6 +50,20 @@ public class Enemy : MonoBehaviour
         float DelayTime = _enemyAnimator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(DelayTime);
         Destroy(gameObject);
+    }
+    private IEnumerator HitMotion()
+    {
+        _enemyAnimator.Play(_data.HitAnim);
+        yield return null; //1 프레임 대기 이전상태로 남아있어 기다림이 필요
+        float DelayTime = _enemyAnimator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(DelayTime);
+    }
+    public IEnumerator AttackMontion()
+    {
+        _enemyAnimator.Play(_data.AttackAnim);
+        yield return null; //1 프레임 대기 이전상태로 남아있어 기다림이 필요
+        float DelayTime = _enemyAnimator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(DelayTime);
     }
     private void CacheComponents()
     {
