@@ -209,7 +209,7 @@ public class BattleManager : MonoBehaviour
         _allEnemyUpCamera.Priority = 80;
         SkillImpact = Instantiate(skillData.SkillEffect, target.position, Quaternion.identity);
         ParticleSystem Impact = SkillImpact.GetComponent<ParticleSystem>();
-        SkillImpact.transform.localScale += new Vector3(3.5f, 3.5f, 3.5f);
+        SkillImpact.transform.localScale += new Vector3(2f, 2f, 2f);
 
         yield return new WaitWhile(Impact.IsAlive);
         for (int i = 0; i < enemies.Count; i++)
