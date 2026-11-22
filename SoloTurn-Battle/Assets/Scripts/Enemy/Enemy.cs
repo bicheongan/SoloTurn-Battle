@@ -7,14 +7,17 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]private EnemyData _data;
     [SerializeField]private float _currentHp;
+    [SerializeField]private float _maxHp;
 
     private Animator _enemyAnimator;
 
     public float Hp => _currentHp;
+    public float MaxHp => _maxHp;
     public float Attack => _data.Attack;
     public int Speed => _data.Speed;
     public bool IsDead;
 
+    public event Action<float, float> OnChangeHp;
     private void Awake()
     {
         CacheComponents();
@@ -22,8 +25,9 @@ public class Enemy : MonoBehaviour
     public void Initialize(EnemyData data)
     {
         _data = data;
+        _maxHp = _data.HP;
         _currentHp = _data.HP;
-
+        OnChangeHp?.Invoke(_currentHp, _maxHp);
     }
     public void LookPlayer(Transform player)
     {
@@ -31,9 +35,10 @@ public class Enemy : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        if(IsDead) return;
+        if (IsDead) return;
         damage = Mathf.Max(damage, 0f);
         _currentHp = Mathf.Max(_currentHp - damage, 0f);
+        OnChangeHp?.Invoke(_currentHp, _maxHp);
         StartCoroutine(HitMotion());
         if (_currentHp <= 0) 
         {

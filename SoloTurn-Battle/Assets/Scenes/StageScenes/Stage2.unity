@@ -690,8 +690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCall
   data:
-  - {fileID: 11400000, guid: e5ffa8343348ed04f86f9227c8bfcbd5, type: 2}
-  - {fileID: 11400000, guid: e5ffa8343348ed04f86f9227c8bfcbd5, type: 2}
+  - {fileID: 11400000, guid: 1f7c28d4452a4934f89b21b8f89dc3cb, type: 2}
 --- !u!1 &382272185
 GameObject:
   m_ObjectHideFlags: 0
@@ -2153,8 +2152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCall
   data:
-  - {fileID: 11400000, guid: e5ffa8343348ed04f86f9227c8bfcbd5, type: 2}
-  - {fileID: 11400000, guid: e5ffa8343348ed04f86f9227c8bfcbd5, type: 2}
+  - {fileID: 11400000, guid: 14823e0d263e48f45920297567b62552, type: 2}
+  - {fileID: 11400000, guid: 14823e0d263e48f45920297567b62552, type: 2}
+  - {fileID: 11400000, guid: 14823e0d263e48f45920297567b62552, type: 2}
 --- !u!1 &1476164379
 GameObject:
   m_ObjectHideFlags: 0
@@ -2884,8 +2884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCall
   data:
-  - {fileID: 11400000, guid: e5ffa8343348ed04f86f9227c8bfcbd5, type: 2}
-  - {fileID: 11400000, guid: e5ffa8343348ed04f86f9227c8bfcbd5, type: 2}
+  - {fileID: 11400000, guid: 14823e0d263e48f45920297567b62552, type: 2}
 --- !u!1 &1790784283
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,6 +2964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4400e47f5a29a6e4cb24dfa0b3401011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HpMpRest
+  _hpmpBar: {fileID: 0}
 --- !u!114 &1790784288
 MonoBehaviour:
   m_ObjectHideFlags: 0
