@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,7 +13,12 @@ public class StageSceneChanger : MonoBehaviour
 
     public void LoadBattleScene()
     {
-        SceneManager.LoadScene("BattleScene",LoadSceneMode.Additive);
+        StartCoroutine(BattleLoadDelay());
+    }
+    private IEnumerator BattleLoadDelay()
+    {
+        AsyncOperation op = SceneManager.LoadSceneAsync("BattleScene", LoadSceneMode.Additive);
+        yield return op;
         _allObject.SetActive(false);
     }
     private void OnObject()

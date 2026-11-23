@@ -1,17 +1,23 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 public class SceneChanger : MonoBehaviour
 {
     public static event Action CloseScene;
     public void SceneChange(string changeScene)
     {
-        SceneManager.LoadScene(changeScene);
+        if (LoadingManager.Instance != null)
+        {
+            LoadingManager.Instance.StartLoading(changeScene);
+        }
+        else
+        {
+            SceneManager.LoadScene(changeScene);
+        }
     }
     public void EnterBattle()
     {
-        SceneManager.LoadScene("BattleScene");
+        SceneChange("BattleScene");
     }
     public void CloseBattleScene()
     {

@@ -10,7 +10,14 @@ public class TitleSceneChanger : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("MainScene");
+            if (LoadingManager.Instance != null)
+            {
+                LoadingManager.Instance.StartLoading("MainScene");
+            }
+            else
+            {
+                SceneManager.LoadScene("MainScene");
+            }
         }
     }
 }

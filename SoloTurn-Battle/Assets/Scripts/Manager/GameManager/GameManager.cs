@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _useItem = 10;
     [SerializeField] private int _totalDate = 100;
     [SerializeField]private int _clearCount;
+    public bool _isLookPlan;
     private SkillData _skillData;
     private int _remainDay;
     public PlayerStates PlayerStates => _playerStates;
@@ -109,7 +110,14 @@ public class GameManager : MonoBehaviour
         _playerStates.Init();
         _skillDataList.SkillReset();
         _clearCount = 0;
-        SceneManager.LoadScene(name);
+        if (LoadingManager.Instance != null)
+        {
+            LoadingManager.Instance.StartLoading(name);
+        }
+        else
+        {
+            SceneManager.LoadScene(name);
+        }
     }
     public void AddCount()
     {
