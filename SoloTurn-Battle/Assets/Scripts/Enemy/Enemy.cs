@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
     {
         if (IsDead) return;
         damage = Mathf.Max(damage * (100f/ (100f+ _data.Defend)), 0f);
-        _currentHp = Mathf.Max(_currentHp - damage, 0f);
+        _currentHp = Mathf.Max(_currentHp - (int)damage, 0f);
         OnChangeHp?.Invoke(_currentHp, _maxHp);
         StartCoroutine(HitMotion());
         if (_currentHp <= 0) 

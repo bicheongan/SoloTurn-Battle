@@ -78,7 +78,7 @@ public class PlayerStates
     public void TakeDamage(float damage)
     {
         damage = Mathf.Max(damage * (100f / (100f + _defend)), 0f);
-        _currentHp = Mathf.Max(_currentHp - damage, 0f);
+        _currentHp = Mathf.Max(_currentHp - (int)damage, 0f);
     }
     public void SaveBaseStates()
     {
