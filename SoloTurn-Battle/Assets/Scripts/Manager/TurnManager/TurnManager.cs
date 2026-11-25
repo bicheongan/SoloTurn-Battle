@@ -7,7 +7,7 @@ public class TurnManager : MonoBehaviour
     private List<EnemyData> data;
     private PlayerStates player;
     private int _maxSpeed;
-    private TurnEnum _currentTurn = TurnEnum.None;
+    private TurnEnum _currentTurn = TurnEnum.BattleStart;
     public event Action<TurnEnum> OnTurnChanged;
     public TurnEnum CurrentTurn { get { return _currentTurn; } }
 
@@ -48,10 +48,9 @@ public class TurnManager : MonoBehaviour
     public event Action OnLosePanel;
     public void BattleEnd(bool iswin)
     {
+        ChangeTurn(TurnEnum.BattleEnd);
         if (iswin == false)
         {
-            Debug.Log(" 플레이어 사망");
-            Debug.Log("졌당ㅠㅠ");
 
             OnLosePanel?.Invoke();
 
@@ -61,8 +60,6 @@ public class TurnManager : MonoBehaviour
         }
         if (iswin == true)
         {
-            Debug.Log("d이겼당");
-
             OnWinPanel?.Invoke();
 
             return;

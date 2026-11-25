@@ -255,7 +255,6 @@ public class BattleManager : MonoBehaviour
             GameManager.Instance.PlayerStates.TakeDamage(enemy.Attack);
             if (GameManager.Instance.PlayerStates.IsDead)
             {
-                _turnManager.ChangeTurn(TurnEnum.BattleEnd);
                 _turnManager.BattleEnd(false);
                 yield break;
             }
