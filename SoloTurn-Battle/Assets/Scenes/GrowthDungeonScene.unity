@@ -1736,7 +1736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 242f2e567d22912459d1c85263389e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrowthAmount
-  _itemAmount: 30
+  _itemAmount: 80
 --- !u!4 &662431758
 Transform:
   m_ObjectHideFlags: 0
@@ -2400,7 +2400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 242f2e567d22912459d1c85263389e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrowthAmount
-  _itemAmount: 10
+  _itemAmount: 20
 --- !u!4 &994464557
 Transform:
   m_ObjectHideFlags: 0
@@ -2932,7 +2932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 242f2e567d22912459d1c85263389e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrowthAmount
-  _itemAmount: 20
+  _itemAmount: 50
 --- !u!4 &1209466465
 Transform:
   m_ObjectHideFlags: 0

@@ -18,12 +18,12 @@ public class StatesUI : MonoBehaviour
     {
         if(_hPText != null)
         {
-            _hPText.text = $"{GameManager.Instance.PlayerStates.CurrentHp}/" +
+            _hPText.text = $"{GameManager.Instance.PlayerStates.MaxHp}/" +
                 $"{GameManager.Instance.PlayerStates.MaxTrainingHp}";
         }
         if (_mPText != null)
         {
-            _mPText.text = $"{GameManager.Instance.PlayerStates.CurrentMp}/" +
+            _mPText.text = $"{GameManager.Instance.PlayerStates.MaxMp}/" +
                 $"{GameManager.Instance.PlayerStates.MaxTrainingMp}";
         }
         if (_attackText != null)

@@ -165,7 +165,7 @@ public class BattleManager : MonoBehaviour
         // 몬스터 위치에 이펙트 생성
         GameObject SkillImpact = Instantiate(skillData.SkillEffect, target.position, Quaternion.identity);
         ParticleSystem Impact = SkillImpact.GetComponent<ParticleSystem>();
-        SkillImpact.transform.localScale += new Vector3(1, 1, 1);
+        //SkillImpact.transform.localScale += new Vector3(1, 1, 1);
         yield return new WaitWhile(Impact.IsAlive);
 
         // 이펙트 재생 후 데미지 전달
@@ -209,12 +209,12 @@ public class BattleManager : MonoBehaviour
         _allEnemyUpCamera.Priority = 80;
         SkillImpact = Instantiate(skillData.SkillEffect, target.position, Quaternion.identity);
         ParticleSystem Impact = SkillImpact.GetComponent<ParticleSystem>();
-        SkillImpact.transform.localScale += new Vector3(2f, 2f, 2f);
+        SkillImpact.transform.localScale += new Vector3(1f, 0f, 1f);
 
         yield return new WaitWhile(Impact.IsAlive);
         for (int i = 0; i < enemies.Count; i++)
         {
-            enemies[i].TakeDamage(GameManager.Instance.PlayerStates.Attack * skillData.Damage);
+            enemies[i].TakeDamage((int)(GameManager.Instance.PlayerStates.Attack * (skillData.Damage / 100f)));
         }
         Destroy(SkillImpact);
         Destroy(SkillImpact2);

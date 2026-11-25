@@ -12700,13 +12700,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   _playerStates:
-    _maxHp: 500
+    _maxHp: 200
     _currentHp: 0
     _maxMp: 50
     _currentMp: 50
     _attack: 10
-    _defend: 0
-    _speed: 5
+    _defend: 30
+    _speed: 10
     _maxTrainingHp: 500
     _maxTrainingMp: 500
     _maxTrainingAttack: 500
