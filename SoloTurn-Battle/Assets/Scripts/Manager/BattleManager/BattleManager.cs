@@ -140,7 +140,7 @@ public class BattleManager : MonoBehaviour
                 Debug.Log(enemycount);
             }
             AllDead();
-
+            if (allDead == true) yield break;
             _turnManager.ChangeTurn(TurnEnum.EnemyTurn);
         }
     }
@@ -168,8 +168,8 @@ public class BattleManager : MonoBehaviour
         SkillImpact.transform.localScale += new Vector3(1, 1, 1);
         yield return new WaitWhile(Impact.IsAlive);
 
-        // 이펙트 재생 후 데미지 전당
-        enemy.TakeDamage(GameManager.Instance.PlayerStates.Attack * skillData.Damage);
+        // 이펙트 재생 후 데미지 전달
+        enemy.TakeDamage((int)(GameManager.Instance.PlayerStates.Attack * (skillData.Damage/100f)));
         Destroy(SkillImpact);
 
         // 저장된 플레이어가 바라보는 방향 원위치 및 카메라 전환
@@ -188,8 +188,9 @@ public class BattleManager : MonoBehaviour
             }
             Debug.Log(enemycount);
         }
-        AllDead();
 
+        AllDead();
+        if (allDead == true) yield break;
         // 턴전환
         _turnManager.ChangeTurn(TurnEnum.EnemyTurn);
     }
@@ -231,7 +232,7 @@ public class BattleManager : MonoBehaviour
             Debug.Log(enemycount);
         }
         AllDead();
-
+        if (allDead == true) yield break;
         _turnManager.ChangeTurn(TurnEnum.EnemyTurn);
     }
 
@@ -245,7 +246,10 @@ public class BattleManager : MonoBehaviour
             {
                 continue;
             }
-            
+            if(enemy.IsHit == true)
+            {
+                yield return new WaitWhile(() =>enemy.IsHit);
+            }
             yield return StartCoroutine(enemy.AttackMontion());
             Debug.Log("공격!!!");
             GameManager.Instance.PlayerStates.TakeDamage(enemy.Attack);

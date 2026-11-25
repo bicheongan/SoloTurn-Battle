@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]private float _maxHp;
 
     private Animator _enemyAnimator;
+    private bool _isHit;
+    public bool IsHit => _isHit;
 
     public float Hp => _currentHp;
     public float MaxHp => _maxHp;
@@ -58,10 +60,12 @@ public class Enemy : MonoBehaviour
     }
     private IEnumerator HitMotion()
     {
+        _isHit = true;
         _enemyAnimator.Play(_data.HitAnim);
         yield return null; //1 프레임 대기 이전상태로 남아있어 기다림이 필요
         float DelayTime = _enemyAnimator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(DelayTime);
+        _isHit = false;
     }
     public IEnumerator AttackMontion()
     {

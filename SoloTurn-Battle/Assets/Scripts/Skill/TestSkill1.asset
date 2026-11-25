@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestSkill1
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
   _skillName: 
-  _damage: 10
+  _damage: 200
   _mpCost: 10
   _learnCost: 50
   _canAllTarget: 0
