@@ -272,10 +272,6 @@ public class BattleManager : MonoBehaviour
             Debug.Log("몬스터 공격");
             StartCoroutine(EnemyAttack());
         }
-        else if (turn == TurnEnum.PlayerTurn)
-        {
-            Debug.Log("플레이어 대기");
-        }
     }
     private void OnEnable()
     {
